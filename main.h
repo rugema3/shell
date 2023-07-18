@@ -216,16 +216,16 @@ int get_error(data_shell *datash, int eval);
 void get_sigint(int sig);
 
 /* aux_help.c */
-void aux_help_env(void);
-void aux_help_setenv(void);
-void aux_help_unsetenv(void);
-void aux_help_general(void);
-void aux_help_exit(void);
+void load_color(void);
+void invert_color(void);
+void lens_color(void);
+void duo_color(void);
+void saturn_color(void);
 
 /* aux_help2.c */
-void aux_help(void);
-void aux_help_alias(void);
-void aux_help_cd(void);
+void help_info_builtin(void);
+void help_info_alias(void);
+void help_info_cd(void);
 
 /* get_help.c */
 int get_help(data_shell *datash);

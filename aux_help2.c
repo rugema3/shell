@@ -1,40 +1,40 @@
 #include "main.h"
 
 /**
- * aux_help - Help information for the builtin help.
+ * help_info_builtin - Help information for the builtin help.
  * Return: no return
  */
-void aux_help(void)
+void help_info_builtin(void)
 {
-	char *help = "help: help [-dms] [pattern ...]\n";
+	char *help_str = "help: help [-dms] [pattern ...]\n";
 
-	write(STDOUT_FILENO, help, _strlen(help));
-	help = "\tDisplay information about builtin commands.\n ";
-	write(STDOUT_FILENO, help, _strlen(help));
-	help = "Displays brief summaries of builtin commands.\n";
-	write(STDOUT_FILENO, help, _strlen(help));
+	write(STDOUT_FILENO, help_str, _strlen(help_str));
+	help_str = "\tDisplay information about builtin commands.\n ";
+	write(STDOUT_FILENO, help_str, _strlen(help_str));
+	help_str = "Displays brief summaries of builtin commands.\n";
+	write(STDOUT_FILENO, help_str, _strlen(help_str));
 }
 /**
- * aux_help_alias - Help information for the builtin alias.
+ * help_info_alias - Help information for the builtin alias.
  * Return: no return
  */
-void aux_help_alias(void)
+void help_info_alias(void)
 {
-	char *help = "alias: alias [-p] [name[=value]...]\n";
+	char *help_str = "alias: alias [-p] [name[=value]...]\n";
 
-	write(STDOUT_FILENO, help, _strlen(help));
-	help = "\tDefine or display aliases.\n ";
-	write(STDOUT_FILENO, help, _strlen(help));
+	write(STDOUT_FILENO, help_str, _strlen(help_str));
+	help_str = "\tDefine or display aliases.\n ";
+	write(STDOUT_FILENO, help_str, _strlen(help_str));
 }
 /**
- * aux_help_cd - Help information for the builtin alias.
+ * help_info_cd - Help information for the builtin alias.
  * Return: no return
  */
-void aux_help_cd(void)
+void help_info_cd(void)
 {
-	char *help = "cd: cd [-L|[-P [-e]] [-@]] [dir]\n";
+	char *help_str = "cd: cd [-L|[-P [-e]] [-@]] [dir]\n";
 
-	write(STDOUT_FILENO, help, _strlen(help));
-	help = "\tChange the shell working directory.\n ";
-	write(STDOUT_FILENO, help, _strlen(help));
+	write(STDOUT_FILENO, help_str, _strlen(help_str));
+	help_str = "\tChange the shell working directory.\n ";
+	write(STDOUT_FILENO, help_str, _strlen(help_str));
 }

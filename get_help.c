@@ -9,21 +9,21 @@ int get_help(data_shell *datash)
 {
 
 	if (datash->args[1] == 0)
-		aux_help_general();
+		duo_color();
 	else if (_strcmp(datash->args[1], "setenv") == 0)
-		aux_help_setenv();
+		invert_color();
 	else if (_strcmp(datash->args[1], "env") == 0)
-		aux_help_env();
+		load_color();
 	else if (_strcmp(datash->args[1], "unsetenv") == 0)
-		aux_help_unsetenv();
+		lens_color();
 	else if (_strcmp(datash->args[1], "help") == 0)
-		aux_help();
+		help_info_builtin();
 	else if (_strcmp(datash->args[1], "exit") == 0)
-		aux_help_exit();
+		saturn_color();
 	else if (_strcmp(datash->args[1], "cd") == 0)
-		aux_help_cd();
+		help_info_cd();
 	else if (_strcmp(datash->args[1], "alias") == 0)
-		aux_help_alias();
+		help_info_alias();
 	else
 		write(STDERR_FILENO, datash->args[0],
 		      _strlen(datash->args[0]));
