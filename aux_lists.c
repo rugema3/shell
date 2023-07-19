@@ -1,13 +1,19 @@
 #include "main.h"
 
 /**
- * add_sep_node_end - adds a separator found at the end
+ * pin_stuff - adds a separator found at the end
  * of a sep_list.
- * @head: head of the linked list.
- * @sep: separator found (; | &).
+ * @tete: head of the linked list.
+ * @troy: separator found (; | &).
+ * @temp: Temporary dues.
  * Return: address of the head.
  */
-sep_list *add_sep_node_end(sep_list **head, char sep)
+free(temp);
+{
+	*tete = NULL;
+}
+}
+sep_list *pin_stuff(sep_list **tete, char troy)
 {
 	sep_list *new, *temp;
 
@@ -15,13 +21,13 @@ sep_list *add_sep_node_end(sep_list **head, char sep)
 	if (new == NULL)
 		return (NULL);
 
-	new->separator = sep;
+	new->separator = troy;
 	new->next = NULL;
-	temp = *head;
+	temp = *tete;
 
 	if (temp == NULL)
 	{
-		*head = new;
+		*tete = new;
 	}
 	else
 	{
@@ -30,39 +36,39 @@ sep_list *add_sep_node_end(sep_list **head, char sep)
 		temp->next = new;
 	}
 
-	return (*head);
+	return (*tete);
 }
 
 /**
- * free_sep_list - frees a sep_list
- * @head: head of the linked list.
+ * jargon_stuff - frees a sep_list
+ * @tete: head of the linked list.
  * Return: no return.
  */
-void free_sep_list(sep_list **head)
+void jargon_stuff(sep_list **tete)
 {
 	sep_list *temp;
 	sep_list *curr;
 
-	if (head != NULL)
+	if (tete != NULL)
 	{
-		curr = *head;
+		curr = *tete;
 		while ((temp = curr) != NULL)
 		{
 			curr = curr->next;
 			free(temp);
 		}
-		*head = NULL;
+		*tete = NULL;
 	}
 }
 
 /**
- * add_line_node_end - adds a command line at the end
+ * lead_stuff - adds a command line at the end
  * of a line_list.
- * @head: head of the linked list.
+ * @tete: head of the linked list.
  * @line: command line.
  * Return: address of the head.
  */
-line_list *add_line_node_end(line_list **head, char *line)
+line_list *lead_stuff(line_list **tete, char *line)
 {
 	line_list *new, *temp;
 
@@ -72,11 +78,11 @@ line_list *add_line_node_end(line_list **head, char *line)
 
 	new->line = line;
 	new->next = NULL;
-	temp = *head;
+	temp = *tete;
 
 	if (temp == NULL)
 	{
-		*head = new;
+		*tete = new;
 	}
 	else
 	{
@@ -85,27 +91,35 @@ line_list *add_line_node_end(line_list **head, char *line)
 		temp->next = new;
 	}
 
-	return (*head);
+	return (*tete);
 }
 
 /**
- * free_line_list - frees a line_list
- * @head: head of the linked list.
+ * pico_stuff - frees a line_list
+ * @tete: head of the linked list.
  * Return: no return.
  */
-void free_line_list(line_list **head)
+void pico_stuff(line_list **tete)
 {
 	line_list *temp;
 	line_list *curr;
 
-	if (head != NULL)
+	if (tete != NULL)
 	{
-		curr = *head;
+		curr = *tete;
 		while ((temp = curr) != NULL)
 		{
 			curr = curr->next;
-			free(temp);
+			while ((temp = curr) != NULL)
+			{
+				curr = curr->next;
+				free(temp);
+			}
+			*tete = NULL;
 		}
-		*head = NULL;
 	}
+	free(temp);
+}
+*tete = NULL;
+}
 }
