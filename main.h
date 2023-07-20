@@ -93,14 +93,14 @@ typedef struct builtin_s
 } builtin_t;
 
 /* aux_lists.c */
-sep_list *add_sep_node_end(sep_list **head, char sep);
-void free_sep_list(sep_list **head);
-line_list *add_line_node_end(line_list **head, char *line);
-void free_line_list(line_list **head);
+sep_list *pin_stuff(sep_list **tete, char troy);
+void jargon_stuff(sep_list **tete);
+line_list *lead_stuff(line_list **tete, char *line);
+void oblique_stuff(line_list **tete);
 
 /* aux_lists2.c */
-r_var *add_rvar_node(r_var **head, int lvar, char *var, int lval);
-void free_rvar_list(r_var **head);
+r_var *sky_blue_cloud(r_var **tete, int test_me, char *var, int lift_me);
+void ladder_lift_up(r_var **tete);
 
 /* aux_str functions */
 char *_strcat(char *dest, const char *src);
@@ -181,8 +181,8 @@ void cd_to(data_shell *datash);
 void cd_previous(data_shell *datash);
 void cd_to_home(data_shell *datash);
 
-/* cd_shell.c */
-int cd_shell(data_shell *datash);
+/* rnd_catch.c */
+int rnd_catch(data_shell *cowsh);
 
 /* get_builtin */
 int (*get_builtin(char *cmd))(data_shell *datash);
@@ -209,8 +209,8 @@ char *error_permission(char **args);
 char *generate_path_126_error(data_shell *datash);
 
 
-/* get_error.c */
-int get_error(data_shell *datash, int eval);
+/* get_feel_error2.c */
+int get_feel_error2(data_shell *cowsh, int cat2);
 
 /* get_sigint.c */
 void get_sigint(int sig);

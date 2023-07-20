@@ -61,11 +61,11 @@ void add_nodes(sep_list **head_s, line_list **head_l, char *input)
 	for (i = 0; input[i]; i++)
 	{
 		if (input[i] == ';')
-			add_sep_node_end(head_s, input[i]);
+			pin_stuff(head_s, input[i]);
 
 		if (input[i] == '|' || input[i] == '&')
 		{
-			add_sep_node_end(head_s, input[i]);
+			pin_stuff(head_s, input[i]);
 			i++;
 		}
 	}
@@ -73,7 +73,7 @@ void add_nodes(sep_list **head_s, line_list **head_l, char *input)
 	line = _strtok(input, ";|&");
 	do {
 		line = swap_char(line, 1);
-		add_line_node_end(head_l, line);
+		lead_stuff(head_l, line);
 		line = _strtok(NULL, ";|&");
 	} while (line != NULL);
 
@@ -160,8 +160,8 @@ int split_commands(data_shell *datash, char *input)
 			list_l = list_l->next;
 	}
 
-	free_sep_list(&head_s);
-	free_line_list(&head_l);
+	jargon_stuff(&head_s);
+	oblique_stuff(&head_l);
 
 	if (loop == 0)
 		return (0);

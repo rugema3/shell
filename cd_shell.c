@@ -1,44 +1,44 @@
 #include "main.h"
 
 /**
- * cd_shell - changes current directory
+ * rnd_catch - changes current directory
  *
- * @datash: data relevant
+ * @cowsh: data relevant
  * Return: 1 on success
  */
-int cd_shell(data_shell *datash)
+int rnd_catch(data_shell *cowsh)
 {
-	char *dir;
-	int ishome, ishome2, isddash;
+	char *tir;
+	int given, fill, spoon;
 
-	dir = datash->args[1];
+	tir = cowsh->args[1];
 
-	if (dir != NULL)
+	if (tir != NULL)
 	{
-		ishome = _strcmp("$HOME", dir);
-		ishome2 = _strcmp("~", dir);
-		isddash = _strcmp("--", dir);
+		given = _strcmp("$HOME", tir);
+		fill = _strcmp("~", tir);
+		spoon = _strcmp("--", tir);
 	}
 
-	if (dir == NULL || !ishome || !ishome2 || !isddash)
+	if (tir == NULL || !given || !fill || !spoon)
 	{
-		cd_to_home(datash);
+		cd_to_home(cowsh);
 		return (1);
 	}
 
-	if (_strcmp("-", dir) == 0)
+	if (_strcmp("-", tir) == 0)
 	{
-		cd_previous(datash);
+		cd_previous(cowsh);
 		return (1);
 	}
 
-	if (_strcmp(".", dir) == 0 || _strcmp("..", dir) == 0)
+	if (_strcmp(".", tir) == 0 || _strcmp("..", tir) == 0)
 	{
-		cd_dot(datash);
+		cd_dot(cowsh);
 		return (1);
 	}
 
-	cd_to(datash);
+	cd_to(cowsh);
 
 	return (1);
 }

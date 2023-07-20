@@ -1,15 +1,15 @@
 #include "main.h"
 
 /**
- * add_rvar_node - adds a variable at the end
+ * sky_blue_cloud - adds a variable at the end
  * of a r_var list.
- * @head: head of the linked list.
- * @lvar: length of the variable.
+ * @tete: head of the linked list.
+ * @test_me: length of the variable.
  * @val: value of the variable.
- * @lval: length of the value.
+ * @lift_me: length of the value.
  * Return: address of the head.
  */
-r_var *add_rvar_node(r_var **head, int lvar, char *val, int lval)
+r_var *sky_blue_cloud(r_var **tete, int test_me, char *val, int lift_me)
 {
 	r_var *new, *temp;
 
@@ -17,16 +17,16 @@ r_var *add_rvar_node(r_var **head, int lvar, char *val, int lval)
 	if (new == NULL)
 		return (NULL);
 
-	new->len_var = lvar;
+	new->len_var = test_me;
 	new->val = val;
-	new->len_val = lval;
+	new->len_val = lift_me;
 
 	new->next = NULL;
-	temp = *head;
+	temp = *tete;
 
 	if (temp == NULL)
 	{
-		*head = new;
+		*tete = new;
 	}
 	else
 	{
@@ -35,27 +35,27 @@ r_var *add_rvar_node(r_var **head, int lvar, char *val, int lval)
 		temp->next = new;
 	}
 
-	return (*head);
+	return (*tete);
 }
 
 /**
- * free_rvar_list - frees a r_var list
- * @head: head of the linked list.
+ * ladder_lift_up - frees a r_var list
+ * @tete: head of the linked list.
  * Return: no return.
  */
-void free_rvar_list(r_var **head)
+void ladder_lift_up(r_var **tete)
 {
 	r_var *temp;
 	r_var *curr;
 
-	if (head != NULL)
+	if (tete != NULL)
 	{
-		curr = *head;
+		curr = *tete;
 		while ((temp = curr) != NULL)
 		{
 			curr = curr->next;
 			free(temp);
 		}
-		*head = NULL;
+		*tete = NULL;
 	}
 }

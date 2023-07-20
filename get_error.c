@@ -1,40 +1,40 @@
 #include "main.h"
 
 /**
- * get_error - calls the error according the builtin, syntax or permission
- * @datash: data structure that contains arguments
- * @eval: error value
+ * get_feel_error2 - calls the error according the builtin, syntax or permission
+ * @cowsh: data structure that contains arguments
+ * @cat2: error value
  * Return: error
  */
-int get_error(data_shell *datash, int eval)
+int get_feel_error2(data_shell *cowsh, int cat2)
 {
-	char *error;
+	char *forr;
 
-	switch (eval)
+	switch (cat2)
 	{
 	case -1:
-		error = generate_env_error(datash);
+		forr = generate_env_error(cowsh);
 		break;
 	case 126:
-		error = generate_path_126_error(datash);
+		forr = generate_path_126_error(cowsh);
 		break;
 	case 127:
-		error = get_not_found_error(datash);
+		forr = get_not_found_error(cowsh);
 		break;
 	case 2:
-		if (_strcmp("exit", datash->args[0]) == 0)
-			error = get_exit_shell_error(datash);
-		else if (_strcmp("cd", datash->args[0]) == 0)
-			error = get_cd_error_message(datash);
+		if (_strcmp("exit", cowsh->args[0]) == 0)
+			forr = get_exit_shell_error(cowsh);
+		else if (_strcmp("cd", cowsh->args[0]) == 0)
+			forr = get_cd_error_message(cowsh);
 		break;
 	}
 
-	if (error)
+	if (forr)
 	{
-		write(STDERR_FILENO, error, _strlen(error));
-		free(error);
+		write(STDERR_FILENO, forr, _strlen(forr));
+		free(forr);
 	}
 
-	datash->status = eval;
-	return (eval);
+	cowsh->status = cat2;
+	return (cat2);
 }
