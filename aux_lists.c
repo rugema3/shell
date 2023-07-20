@@ -5,8 +5,19 @@
  * of a sep_list.
  * @tete: head of the linked list.
  * @troy: separator found (; | &).
+<<<<<<< HEAD
  * Return: address of the head.
  */
+=======
+ * @temp: Temporary dues.
+ * Return: address of the head.
+ */
+free(temp);
+{
+	*tete = NULL;
+}
+}
+>>>>>>> 0d4a1545b779f1d76762b7c942d8a938697e8021
 sep_list *pin_stuff(sep_list **tete, char troy)
 {
 	sep_list *new, *temp;
@@ -89,11 +100,19 @@ line_list *lead_stuff(line_list **tete, char *line)
 }
 
 /**
+<<<<<<< HEAD
  * oblique_stuff - frees a line_list
  * @tete: head of the linked list.
  * Return: no return.
  */
 void oblique_stuff(line_list **tete)
+=======
+ * pico_stuff - frees a line_list
+ * @tete: head of the linked list.
+ * Return: no return.
+ */
+void pico_stuff(line_list **tete)
+>>>>>>> 0d4a1545b779f1d76762b7c942d8a938697e8021
 {
 	line_list *temp;
 	line_list *curr;
@@ -104,8 +123,20 @@ void oblique_stuff(line_list **tete)
 		while ((temp = curr) != NULL)
 		{
 			curr = curr->next;
-			free(temp);
+			while ((temp = curr) != NULL)
+			{
+				curr = curr->next;
+				free(temp);
+			}
+			*tete = NULL;
 		}
+<<<<<<< HEAD
 		*tete = NULL;
+=======
+>>>>>>> 0d4a1545b779f1d76762b7c942d8a938697e8021
 	}
+	free(temp);
+}
+*tete = NULL;
+}
 }

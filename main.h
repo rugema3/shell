@@ -92,11 +92,19 @@ typedef struct builtin_s
 	int (*f)(data_shell *datash);
 } builtin_t;
 
+<<<<<<< HEAD
 /* aux_lists.c */
 sep_list *pin_stuff(sep_list **tete, char troy);
 void jargon_stuff(sep_list **tete);
 line_list *lead_stuff(line_list **tete, char *line);
 void oblique_stuff(line_list **tete);
+=======
+/*aux_lists.c*/
+sep_list *pin_stuff(sep_list **tete, char sep);
+void jargon_stuff(sep_list **tete);
+line_list *lead_stuff(line_list **tete, char *line);
+void pico_stuff(line_list **tete);
+>>>>>>> 0d4a1545b779f1d76762b7c942d8a938697e8021
 
 /* aux_lists2.c */
 r_var *sky_blue_cloud(r_var **tete, int test_me, char *var, int lift_me);
