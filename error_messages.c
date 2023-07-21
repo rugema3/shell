@@ -48,7 +48,7 @@ char *get_cd_error_message(data_shell *datash)
 	int length, len_id;
 	char *error, *line_counter, *msg;
 
-	line_counter = aux_itoa(datash->counter);
+	line_counter = conv_num(datash->counter);
 	if (datash->args[1][0] == '-')
 	{
 		msg = ": Illegal option ";
@@ -89,7 +89,7 @@ char *get_not_found_error(data_shell *datash)
 	char *error;
 	char *line_counter;
 
-	line_counter = aux_itoa(datash->counter);
+	line_counter = conv_num(datash->counter);
 	length = _strlen(datash->av[0]) + _strlen(line_counter);
 	length += _strlen(datash->args[0]) + 16;
 	error = malloc(sizeof(char) * (length + 1));
@@ -122,7 +122,7 @@ char *get_exit_shell_error(data_shell *datash)
 	char *error;
 	char *line_counter;
 
-	line_counter = aux_itoa(datash->counter);
+	line_counter = conv_num(datash->counter);
 	length = _strlen(datash->av[0]) + _strlen(line_counter);
 	length += _strlen(datash->args[0]) + _strlen(datash->args[1]) + 23;
 	error = malloc(sizeof(char) * (length + 1));

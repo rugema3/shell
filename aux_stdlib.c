@@ -1,100 +1,100 @@
 #include "main.h"
 
 /**
- * get_len - Get the lenght of a number.
- * @n: type int number.
+ * how_long - Get the lenght of a number.
+ * @num_it: type int number.
  * Return: Lenght of a number.
  */
-int get_len(int n)
+int how_long(int num_it)
 {
-	unsigned int n1;
-	int lenght = 1;
+	unsigned int quant;
+	int longeur = 1;
 
-	if (n < 0)
+	if (num_it < 0)
 	{
-		lenght++;
-		n1 = n * -1;
+		longeur++;
+		quant = num_it * -1;
 	}
 	else
 	{
-		n1 = n;
+		quant = num_it;
 	}
-	while (n1 > 9)
+	while (quant > 9)
 	{
-		lenght++;
-		n1 = n1 / 10;
+		longeur++;
+		quant = quant / 10;
 	}
 
-	return (lenght);
+	return (longeur);
 }
 /**
- * aux_itoa - function converts int to string.
- * @n: type int number
+ * conv_num - function converts int to string.
+ * @num_it: type int number
  * Return: String.
  */
-char *aux_itoa(int n)
+char *conv_num(int num_it)
 {
-	unsigned int n1;
-	int lenght = get_len(n);
-	char *buffer;
+	unsigned int quant;
+	int longeur = how_long(num_it);
+	char *lockerd;
 
-	buffer = malloc(sizeof(char) * (lenght + 1));
-	if (buffer == 0)
+	lockerd = malloc(sizeof(char) * (longeur + 1));
+	if (lockerd == 0)
 		return (NULL);
 
-	*(buffer + lenght) = '\0';
+	*(lockerd + longeur) = '\0';
 
-	if (n < 0)
+	if (num_it < 0)
 	{
-		n1 = n * -1;
-		buffer[0] = '-';
+		quant = num_it * -1;
+		lockerd[0] = '-';
 	}
 	else
 	{
-		n1 = n;
+		quant = num_it;
 	}
 
-	lenght--;
+	longeur--;
 	do {
-		*(buffer + lenght) = (n1 % 10) + '0';
-		n1 = n1 / 10;
-		lenght--;
+		*(lockerd + longeur) = (quant % 10) + '0';
+		quant = quant / 10;
+		longeur--;
 	}
-	while (n1 > 0)
+	while (quant > 0)
 		;
-	return (buffer);
+	return (lockerd);
 }
 
 /**
- * _atoi - converts a string to an integer.
+ * str_oax - converts a string to an integer.
  * @s: input string.
  * Return: integer.
  */
-int _atoi(char *s)
+int str_oax(char *s)
 {
-	unsigned int count = 0, size = 0, oi = 0, pn = 1, m = 1, i;
+	unsigned int compte = 0, la_taille = 0, inn = 0, rally = 1, quack = 1, i;
 
-	while (*(s + count) != '\0')
+	while (*(s + compte) != '\0')
 	{
-		if (size > 0 && (*(s + count) < '0' || *(s + count) > '9'))
+		if (la_taille > 0 && (*(s + compte) < '0' || *(s + compte) > '9'))
 			break;
 
-		if (*(s + count) == '-')
-			pn *= -1;
+		if (*(s + compte) == '-')
+			rally *= -1;
 
-		if ((*(s + count) >= '0') && (*(s + count) <= '9'))
+		if ((*(s + compte) >= '0') && (*(s + compte) <= '9'))
 		{
-			if (size > 0)
-				m *= 10;
-			size++;
+			if (la_taille > 0)
+				quack *= 10;
+			la_taille++;
 		}
-		count++;
+		compte++;
 	}
 
-	for (i = count - size; i < count; i++)
+	for (i = compte - la_taille; i < compte; i++)
 	{
-		oi = oi + ((*(s + i) - 48) * m);
-		m /= 10;
+		inn = inn + ((*(s + i) - 48) * quack);
+		quack /= 10;
 	}
-	return (oi * pn);
+	return (inn * rally);
 }

@@ -12,7 +12,7 @@ char *generate_env_error(data_shell *datash)
 	char *line_counter;
 	char *msg;
 
-	line_counter = aux_itoa(datash->counter);
+	line_counter = conv_num(datash->counter);
 	msg = ": Unable to add/remove from environment\n";
 	length = _strlen(datash->av[0]) + _strlen(line_counter);
 	length += _strlen(datash->args[0]) + _strlen(msg) + 4;
@@ -48,7 +48,7 @@ char *generate_path_126_error(data_shell *datash)
 	char *line_counter;
 	char *error;
 
-	line_counter = aux_itoa(datash->counter);
+	line_counter = conv_num(datash->counter);
 	length = _strlen(datash->av[0]) + _strlen(line_counter);
 	length += _strlen(datash->args[0]) + 24;
 	error = malloc(sizeof(char) * (length + 1));

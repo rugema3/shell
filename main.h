@@ -192,9 +192,9 @@ int (*get_builtin(char *cmd))(data_shell *datash);
 int exit_shell(data_shell *datash);
 
 /* aux_stdlib.c */
-int get_len(int n);
-char *aux_itoa(int n);
-int _atoi(char *s);
+int how_long(int num_it);
+char *conv_num(int num_it);
+int str_oax(char *s);
 
 /* aux_error1.c */
 char *concat_error_message(data_shell *, char *, char *, char *);
