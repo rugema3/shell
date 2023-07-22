@@ -167,8 +167,8 @@ int check_error_cmd(char *dir, data_shell *datash);
 int cmd_exec(data_shell *datash);
 
 /* env1.c */
-char *_getenv(const char *name, char **_environ);
-int _env(data_shell *datash);
+char *akirenv(const char *izin, char **evision);
+int ibik(data_shell *rndsh);
 
 /* env2.c */
 char *copy_info(char *name, char *value);
