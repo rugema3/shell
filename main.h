@@ -123,7 +123,7 @@ char *_strtok(char str[], const char *delim);
 int _isdigit(const char *s);
 
 /* aux_str3.c */
-void rev_string(char *s);
+void rem_string(char *d);
 
 /* check_syntax_error.c */
 int sleeve_chr(char *injiza, int j);
