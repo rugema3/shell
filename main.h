@@ -103,12 +103,12 @@ void oblique_stuff(line_list **tete);
 r_var *sky_blue_cloud(r_var **tete, int test_me, char *var, int lift_me);
 void ladder_lift_up(r_var **tete);
 
-/* aux_str functions */
-char *_strcat(char *dest, const char *src);
-char *_strcpy(char *dest, char *src);
-int _strcmp(char *s1, char *s2);
-char *_strchr(char *s, char c);
-int _strspn(char *s, char *accept);
+/* aux_str.c */
+char *_strxat(char *best, const char *srcm);
+char *_strcp_y(char *best, char *srcm);
+int strcmp_e(char *b1, char *b2);
+char *strchr_load(char *b, char y);
+int strspn_load(char *b, char *except);
 
 /* aux_mem.c */
 void colg(void *str_grm, const void *grm, unsigned int ingan);
