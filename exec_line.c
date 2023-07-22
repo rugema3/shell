@@ -1,22 +1,22 @@
 #include "main.h"
 
 /**
- * exec_line - finds builtins and commands
+ * iher_umur - finds builtins and commands
  *
- * @datash: data relevant (args)
+ * @rndsh: data relevant (args)
  * Return: 1 on success.
  */
-int exec_line(data_shell *datash)
+int iher_umur(data_shell *rndsh)
 {
-	int (*builtin)(data_shell *datash);
+	int (*ubakib)(data_shell *rndsh);
 
-	if (datash->args[0] == NULL)
+	if (rndsh->args[0] == NULL)
 		return (1);
 
-	builtin = get_builtin(datash->args[0]);
+	ubakib = get_builtin(rndsh->args[0]);
 
-	if (builtin != NULL)
-		return (builtin(datash));
+	if (ubakib != NULL)
+		return (ubakib(rndsh));
 
-	return (cmd_exec(datash));
+	return (cmd_exec(rndsh));
 }
