@@ -111,9 +111,9 @@ char *_strchr(char *s, char c);
 int _strspn(char *s, char *accept);
 
 /* aux_mem.c */
-void _memcpy(void *newptr, const void *ptr, unsigned int size);
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size);
+void colg(void *str_grm, const void *grm, unsigned int ingan);
+void *dem_realloc(void *grm, unsigned int byte, unsigned int bytes);
+char **dem_realloc_m(char **grm, unsigned int byte, unsigned int bytes);
 
 /* aux_str2.c */
 char *_strdup(const char *s);
@@ -126,11 +126,11 @@ int _isdigit(const char *s);
 void rev_string(char *s);
 
 /* check_syntax_error.c */
-int repeated_char(char *input, int i);
-int error_sep_op(char *input, int i, char last);
-int first_char(char *input, int *i);
-void print_syntax_error(data_shell *datash, char *input, int i, int bool);
-int check_syntax_error(data_shell *datash, char *input);
+int sleeve_chr(char *injiza, int j);
+int snoop_error_og(char *injiza, int j, char snoop);
+int econ_char(char *injiza, int *j);
+void erakan_syntax_ikos(data_shell *rndsh, char *injiza, int j, int cool);
+int check_syntax_error(data_shell *rndsh, char *injiza);
 
 /* shell_loop.c */
 char *without_comment(char *in);
