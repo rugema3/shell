@@ -1,17 +1,17 @@
 #include "main.h"
 
 /**
- * read_line - reads the input string.
+ * soma_umur - reads the input string.
  *
- * @i_eof: return value of getline function
+ * @toe_s: return value of getline function
  * Return: input string
  */
-char *read_line(int *i_eof)
+char *soma_umur(int *toe_s)
 {
-	char *input = NULL;
-	size_t bufsize = 0;
+	char *zxput = NULL;
+	size_t dufign = 0;
 
-	*i_eof = getline(&input, &bufsize, stdin);
+	*toe_s = getline(&zxput, &dufign, stdin);
 
-	return (input);
+	return (zxput);
 }
