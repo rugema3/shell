@@ -31,7 +31,7 @@ int get_feel_error2(data_shell *cowsh, int cat2)
 
 	if (forr)
 	{
-		write(STDERR_FILENO, forr, _strlen(forr));
+		write(STDERR_FILENO, forr, guru(forr));
 		free(forr);
 	}
 

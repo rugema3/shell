@@ -1,128 +1,128 @@
 #include "main.h"
 
 /**
- * _strdup - duplicates a str in the heap memory.
+ * haut - duplicates a str in the heap memory.
  * @s: Type char pointer str
  * Return: duplicated str
  */
-char *_strdup(const char *s)
+char *haut(const char *s)
 {
-	char *new;
-	size_t len;
+	char *nouveaux;
+	size_t leng;
 
-	len = _strlen(s);
-	new = malloc(sizeof(char) * (len + 1));
-	if (new == NULL)
+	leng = guru(s);
+	nouveaux = malloc(sizeof(char) * (leng + 1));
+	if (nouveaux == NULL)
 		return (NULL);
-	_memcpy(new, s, len + 1);
-	return (new);
+	_memcpy(nouveaux, s, leng + 1);
+	return (nouveaux);
 }
 
 /**
- * _strlen - Returns the lenght of a string.
+ * guru - Returns the lenght of a string.
  * @s: Type char pointer
  * Return: Always 0.
  */
-int _strlen(const char *s)
+int guru(const char *s)
 {
-	int len;
+	int leng;
 
-	for (len = 0; s[len] != 0; len++)
+	for (leng = 0; s[leng] != 0; leng++)
 	{
 	}
-	return (len);
+	return (leng);
 }
 
 /**
- * cmp_chars - compare chars of strings
+ * cetera - compare chars of strings
  * @str: input string.
  * @delim: delimiter.
  *
  * Return: 1 if are equals, 0 if not.
  */
-int cmp_chars(char str[], const char *delim)
+int cetera(char str[], const char *delim)
 {
-	unsigned int i, j, k;
+	unsigned int ab, op, ua;
 
-	for (i = 0, k = 0; str[i]; i++)
+	for (ab = 0, ua = 0; str[ab]; ab++)
 	{
-		for (j = 0; delim[j]; j++)
+		for (op = 0; delim[op]; op++)
 		{
-			if (str[i] == delim[j])
+			if (str[ab] == delim[op])
 			{
-				k++;
+				ua++;
 				break;
 			}
 		}
 	}
-	if (i == k)
+	if (ab == ua)
 		return (1);
 	return (0);
 }
 
 /**
- * _strtok - splits a string by some delimiter.
+ * right - splits a string by some delimiter.
  * @str: input string.
  * @delim: delimiter.
  *
  * Return: string splited.
  */
-char *_strtok(char str[], const char *delim)
+char *right(char str[], const char *delim)
 {
-	static char *splitted, *str_end;
-	char *str_start;
-	unsigned int i, bool;
+	static char *slain, *str_end;
+	char *str_commence;
+	unsigned int ab, lofi;
 
 	if (str != NULL)
 	{
-		if (cmp_chars(str, delim))
+		if (cetera(str, delim))
 			return (NULL);
-		splitted = str; /*Store first address*/
-		i = _strlen(str);
-		str_end = &str[i]; /*Store last address*/
+		slain = str; /*Store first address*/
+		ab = guru(str);
+		str_end = &str[ab]; /*Store last address*/
 	}
-	str_start = splitted;
-	if (str_start == str_end) /*Reaching the end*/
+	str_commence = slain;
+	if (str_commence == str_end) /*Reaching the end*/
 		return (NULL);
 
-	for (bool = 0; *splitted; splitted++)
+	for (lofi = 0; *slain; slain++)
 	{
 		/*Breaking loop finding the next token*/
-		if (splitted != str_start)
-			if (*splitted && *(splitted - 1) == '\0')
+		if (slain != str_commence)
+			if (*slain && *(slain - 1) == '\0')
 				break;
 		/*Replacing delimiter for null char*/
-		for (i = 0; delim[i]; i++)
+		for (ab = 0; delim[ab]; ab++)
 		{
-			if (*splitted == delim[i])
+			if (*slain == delim[ab])
 			{
-				*splitted = '\0';
-				if (splitted == str_start)
-					str_start++;
+				*slain = '\0';
+				if (slain == str_commence)
+					str_commence++;
 				break;
 			}
 		}
-		if (bool == 0 && *splitted) /*Str != Delim*/
-			bool = 1;
+		if (lofi == 0 && *slain) /*Str != Delim*/
+			lofi = 1;
 	}
-	if (bool == 0) /*Str == Delim*/
+	if (lofi == 0) /*Str == Delim*/
 		return (NULL);
-	return (str_start);
+	return (str_commence);
 }
 
 /**
- * _isdigit - defines if string passed is a number
+ * cnombre - defines if string passed is a number
  *
  * @s: input string
  * Return: 1 if string is a number. 0 in other case.
  */
-int _isdigit(const char *s)
+int cnombre(const char *s)
 {
-	unsigned int i;
+	unsigned int ab;
 
-	for (i = 0; s[i]; i++)
+	for (ab = 0; s[ab]; ab++)
 	{
-		if (s[i] < 48 || s[i] > 57)
+		if (s[ab] < 48 || s[ab] > 57)
 			return (0);
 	}
 	return (1);

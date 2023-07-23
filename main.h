@@ -116,11 +116,11 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size);
 
 /* aux_str2.c */
-char *_strdup(const char *s);
-int _strlen(const char *s);
-int cmp_chars(char str[], const char *delim);
-char *_strtok(char str[], const char *delim);
-int _isdigit(const char *s);
+char *haut(const char *s);
+int guru(const char *s);
+int cetera(char str[], const char *delim);
+char *right(char str[], const char *delim);
+int cnombre(const char *s);
 
 /* aux_str3.c */
 void rev_string(char *s);

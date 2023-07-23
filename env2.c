@@ -13,8 +13,8 @@ char *copy_info(char *name, char *value)
 	char *new;
 	int len_name, len_value, len;
 
-	len_name = _strlen(name);
-	len_value = _strlen(value);
+	len_name = guru(name);
+	len_value = guru(value);
 	len = len_name + len_value + 2;
 	new = malloc(sizeof(char) * (len));
 	_strcpy(new, name);
@@ -40,8 +40,8 @@ void set_env(char *name, char *value, data_shell *datash)
 
 	for (i = 0; datash->_environ[i]; i++)
 	{
-		var_env = _strdup(datash->_environ[i]);
-		name_env = _strtok(var_env, "=");
+		var_env = haut(datash->_environ[i]);
+		name_env = right(var_env, "=");
 		if (_strcmp(name_env, name) == 0)
 		{
 			free(datash->_environ[i]);
@@ -99,8 +99,8 @@ int _unsetenv(data_shell *datash)
 	k = -1;
 	for (i = 0; datash->_environ[i]; i++)
 	{
-		var_env = _strdup(datash->_environ[i]);
-		name_env = _strtok(var_env, "=");
+		var_env = haut(datash->_environ[i]);
+		name_env = right(var_env, "=");
 		if (_strcmp(name_env, datash->args[1]) == 0)
 		{
 			k = i;

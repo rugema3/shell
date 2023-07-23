@@ -58,11 +58,11 @@ char *get_cd_error_message(data_shell *datash)
 	{
 		msg = ": can't cd to ";
 
-		len_id = _strlen(datash->args[1]);
+		len_id = guru(datash->args[1]);
 	}
 
-	length = _strlen(datash->av[0]) + _strlen(datash->args[0]);
-	length += _strlen(line_counter) + _strlen(msg) + len_id + 5;
+	length = guru(datash->av[0]) + guru(datash->args[0]);
+	length += guru(line_counter) + guru(msg) + len_id + 5;
 	error = malloc(sizeof(char) * (length + 1));
 
 	if (error == 0)
@@ -90,8 +90,8 @@ char *get_not_found_error(data_shell *datash)
 	char *line_counter;
 
 	line_counter = conv_num(datash->counter);
-	length = _strlen(datash->av[0]) + _strlen(line_counter);
-	length += _strlen(datash->args[0]) + 16;
+	length = guru(datash->av[0]) + guru(line_counter);
+	length += guru(datash->args[0]) + 16;
 	error = malloc(sizeof(char) * (length + 1));
 	if (error == 0)
 	{
@@ -123,8 +123,8 @@ char *get_exit_shell_error(data_shell *datash)
 	char *line_counter;
 
 	line_counter = conv_num(datash->counter);
-	length = _strlen(datash->av[0]) + _strlen(line_counter);
-	length += _strlen(datash->args[0]) + _strlen(datash->args[1]) + 23;
+	length = guru(datash->av[0]) + guru(line_counter);
+	length += guru(datash->args[0]) + guru(datash->args[1]) + 23;
 	error = malloc(sizeof(char) * (length + 1));
 	if (error == 0)
 	{
