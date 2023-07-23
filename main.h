@@ -229,6 +229,6 @@ void help_info_alias(void);
 void help_info_cd(void);
 
 /* get_help.c */
-int get_help(data_shell *datash);
+int akir_ubuf(data_shell *rndsh);
 
 #endif

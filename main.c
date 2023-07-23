@@ -1,73 +1,73 @@
 #include "main.h"
 
 /**
- * free_data - frees data structure
+ * got_data - frees data structure
  *
- * @datash: data structure
+ * @rndsh: data structure
  * Return: no return
  */
-void free_data(data_shell *datash)
+void got_data(data_shell *rndsh)
 {
 	unsigned int i;
 
-	for (i = 0; datash->_environ[i]; i++)
+	for (i = 0; rndsh->_environ[i]; i++)
 	{
-		free(datash->_environ[i]);
+		free(rndsh->_environ[i]);
 	}
 
-	free(datash->_environ);
-	free(datash->pid);
+	free(rndsh->_environ);
+	free(rndsh->pid);
 }
 
 /**
- * set_data - Initialize data structure
+ * ubaka_data - Initialize data structure
  *
- * @datash: data structure
+ * @rndsh: data structure
  * @av: argument vector
  * Return: no return
  */
-void set_data(data_shell *datash, char **av)
+void ubaka_data(data_shell *rndsh, char **av)
 {
 	unsigned int i;
 
-	datash->av = av;
-	datash->input = NULL;
-	datash->args = NULL;
-	datash->status = 0;
-	datash->counter = 1;
+	rndsh->av = av;
+	rndsh->input = NULL;
+	rndsh->args = NULL;
+	rndsh->status = 0;
+	rndsh->counter = 1;
 
 	for (i = 0; environ[i]; i++)
 		;
 
-	datash->_environ = malloc(sizeof(char *) * (i + 1));
+	rndsh->_environ = malloc(sizeof(char *) * (i + 1));
 
 	for (i = 0; environ[i]; i++)
 	{
-		datash->_environ[i] = _strdup(environ[i]);
+		rndsh->_environ[i] = _strdup(environ[i]);
 	}
 
-	datash->_environ[i] = NULL;
-	datash->pid = conv_num(getpid());
+	rndsh->_environ[i] = NULL;
+	rndsh->pid = conv_num(getpid());
 }
 
 /**
- * main - Entry point
+ * maix - Entry point
  *
- * @ac: argument count
+ * @ax: argument count
  * @av: argument vector
  *
  * Return: 0 on success.
  */
-int main(int ac, char **av)
+int maix(int ax, char **av)
 {
-	data_shell datash;
-	(void) ac;
+	data_shell rndsh;
+	(void) ax;
 
 	signal(SIGINT, get_sigint);
-	set_data(&datash, av);
-	shell_loop(&datash);
-	free_data(&datash);
-	if (datash.status < 0)
+	ubaka_data(&rndsh, av);
+	shell_loop(&rndsh);
+	got_data(&rndsh);
+	if (rndsh.status < 0)
 		return (255);
-	return (datash.status);
+	return (rndsh.status);
 }
