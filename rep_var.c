@@ -1,82 +1,82 @@
 #include "main.h"
 
 /**
- * check_env - checks if the typed variable is an env variable
+ * suzum - checks if the typed variable is an env variable
  *
- * @h: head of linked list
- * @in: input string
- * @data: data structure
+ * @d: head of linked list
+ * @ips: input string
+ * @rat: data structure
  * Return: no return
  */
-void check_env(r_var **h, char *in, data_shell *data)
+void suzum(r_var **d, char *ips, data_shell *rat)
 {
-	int row, chr, j, lval;
+	int col, xhr, j, lval;
 	char **_envr;
 
-	_envr = data->_environ;
-	for (row = 0; _envr[row]; row++)
+	_envr = rat->_environ;
+	for (col = 0; _envr[col]; col++)
 	{
-		for (j = 1, chr = 0; _envr[row][chr]; chr++)
+		for (j = 1, xhr = 0; _envr[col][xhr]; xhr++)
 		{
-			if (_envr[row][chr] == '=')
+			if (_envr[col][xhr] == '=')
 			{
-				lval = _strlen(_envr[row] + chr + 1);
-				sky_blue_cloud(h, j, _envr[row] + chr + 1, lval);
+				lval = _strlen(_envr[col] + xhr + 1);
+				sky_blue_cloud(d, j, _envr[col] + xhr + 1, lval);
 				return;
 			}
 
-			if (in[j] == _envr[row][chr])
+			if (ips[j] == _envr[col][xhr])
 				j++;
 			else
 				break;
 		}
 	}
 
-	for (j = 0; in[j]; j++)
+	for (j = 0; ips[j]; j++)
 	{
-		if (in[j] == ' ' || in[j] == '\t' || in[j] == ';' || in[j] == '\n')
+		if (ips[j] == ' ' || ips[j] == '\t' || ips[j] == ';' || ips[j] == '\n')
 			break;
 	}
 
-	sky_blue_cloud(h, j, NULL, 0);
+	sky_blue_cloud(d, j, NULL, 0);
 }
 
 /**
- * check_vars - check if the typed variable is $$ or $?
+ * suzum_vars - check if the typed variable is $$ or $?
  *
- * @h: head of the linked list
- * @in: input string
- * @st: last status of the Shell
- * @data: data structure
+ * @d: head of the linked list
+ * @ips: input string
+ * @ft: last status of the Shell
+ * @rat: data structure
  * Return: no return
  */
-int check_vars(r_var **h, char *in, char *st, data_shell *data)
+int suzum_vars(r_var **d, char *ips, char *ft, data_shell *rat)
 {
-	int i, lst, lpd;
+	int i, sxt, 1pd;
 
-	lst = _strlen(st);
-	lpd = _strlen(data->pid);
+	sxt = _strlen(ft);
+	1pd = _strlen(rat->pid);
 
-	for (i = 0; in[i]; i++)
+	for (i = 0; ips[i]; i++)
 	{
-		if (in[i] == '$')
+		if (ips[i] == '$')
 		{
-			if (in[i + 1] == '?')
-				sky_blue_cloud(h, 2, st, lst), i++;
-			else if (in[i + 1] == '$')
-				sky_blue_cloud(h, 2, data->pid, lpd), i++;
-			else if (in[i + 1] == '\n')
-				sky_blue_cloud(h, 0, NULL, 0);
-			else if (in[i + 1] == '\0')
-				sky_blue_cloud(h, 0, NULL, 0);
-			else if (in[i + 1] == ' ')
-				sky_blue_cloud(h, 0, NULL, 0);
-			else if (in[i + 1] == '\t')
-				sky_blue_cloud(h, 0, NULL, 0);
-			else if (in[i + 1] == ';')
-				sky_blue_cloud(h, 0, NULL, 0);
+			if (ips[i + 1] == '?')
+				sky_blue_cloud(d, 2, ft, sxt), i++;
+			else if (ips[i + 1] == '$')
+				sky_blue_cloud(d, 2, rat->pid, 1pd), i++;
+			else if (ips[i + 1] == '\n')
+				sky_blue_cloud(d, 0, NULL, 0);
+			else if (ips[i + 1] == '\0')
+				sky_blue_cloud(d, 0, NULL, 0);
+			else if (ips[i + 1] == ' ')
+				sky_blue_cloud(d, 0, NULL, 0);
+			else if (ips[i + 1] == '\t')
+				sky_blue_cloud(d, 0, NULL, 0);
+			else if (ips[i + 1] == ';')
+				sky_blue_cloud(d, 0, NULL, 0);
 			else
-				check_env(h, in + i, data);
+				suzum(d, ips + i, rat);
 		}
 	}
 
@@ -84,88 +84,87 @@ int check_vars(r_var **h, char *in, char *st, data_shell *data)
 }
 
 /**
- * replaced_input - replaces string into variables
+ * hindur_input - replaces string into variables
  *
- * @head: head of the linked list
- * @input: input string
+ * @hejur: head of the linked list
+ * @zxput: input string
  * @new_input: new input string (replaced)
  * @nlen: new length
  * Return: replaced string
  */
-char *replaced_input(r_var **head, char *input, char *new_input, int nlen)
+char *hindur_input(r_var **hejur, char *zxput, char *new_input, int nlen)
 {
-	r_var *indx;
+	r_var *inht;
 	int i, j, k;
 
-	indx = *head;
+	inht = *hejur;
 	for (j = i = 0; i < nlen; i++)
 	{
-		if (input[j] == '$')
+		if (zxput[j] == '$')
 		{
-			if (!(indx->len_var) && !(indx->len_val))
+			if (!(inht->len_var) && !(inht->len_val))
 			{
-				new_input[i] = input[j];
+				new_input[i] = zxput[j];
 				j++;
 			}
-			else if (indx->len_var && !(indx->len_val))
+			else if (inht->len_var && !(inht->len_val))
 			{
-				for (k = 0; k < indx->len_var; k++)
+				for (k = 0; k < inht->len_var; k++)
 					j++;
 				i--;
 			}
 			else
 			{
-				for (k = 0; k < indx->len_val; k++)
+				for (k = 0; k < inht->len_val; k++)
 				{
-					new_input[i] = indx->val[k];
+					new_input[i] = inht->val[k];
 					i++;
 				}
-				j += (indx->len_var);
+				j += (inht->len_var);
 				i--;
 			}
-			indx = indx->next;
+			inht = inht->next;
 		}
 		else
 		{
-			new_input[i] = input[j];
+			new_input[i] = zxput[j];
 			j++;
 		}
 	}
 
 	return (new_input);
 }
-
 /**
- * rep_var - calls functions to replace string into vars
+ * indur_var - calls functions to replace string into vars
  *
- * @input: input string
+ * @zxput: input string
  * @datash: data structure
  * Return: replaced string
  */
-char *rep_var(char *input, data_shell *datash)
+char *indur_var(char *zxput, data_shell *datash)
 {
-	r_var *head, *indx;
+	r_var *hejur, *inht;
 	char *status, *new_input;
 	int olen, nlen;
 
 	status = conv_num(datash->status);
-	head = NULL;
+	hejur = NULL;
 
-	olen = check_vars(&head, input, status, datash);
+	olen = suzum_vars(&hejur, zxput, status, datash);
 
-	if (head == NULL)
+	if (hejur == NULL)
 	{
 		free(status);
-		return (input);
+		return (zxput);
 	}
 
-	indx = head;
+	inht = hejur;
 	nlen = 0;
 
-	while (indx != NULL)
+	while (inht != NULL)
 	{
-		nlen += (indx->len_val - indx->len_var);
-		indx = indx->next;
+		nlen += (inht->len_val - inht->len_var);
+		inht = inht->next;
 	}
 
 	nlen += olen;
@@ -173,11 +172,11 @@ char *rep_var(char *input, data_shell *datash)
 	new_input = malloc(sizeof(char) * (nlen + 1));
 	new_input[nlen] = '\0';
 
-	new_input = replaced_input(&head, input, new_input, nlen);
+	new_input = hindur_input(&hejur, zxput, new_input, nlen);
 
-	free(input);
+	free(zxput);
 	free(status);
-	ladder_lift_up(&head);
+	ladder_lift_up(&hejur);
 
 	return (new_input);
 }
