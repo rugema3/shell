@@ -47,7 +47,7 @@ void _dot(data_shell *rndsh)
 		chdir("/");
 		set_env("PWD", "/", rndsh);
 	}
-	rndsh->status = 0;
+	rndsh->guys = 0;
 	free(cp_pluk);
 }
 
@@ -81,7 +81,7 @@ void dot_cmd(data_shell *rndsh)
 	free(cp_pluk);
 	free(cp_dir);
 
-	rndsh->status = 0;
+	rndsh->guys = 0;
 
 	chdir(dir);
 }
@@ -123,7 +123,7 @@ void previous_cmd(data_shell *rndsh)
 	if (p_oldpluk)
 		free(cp_oldpluk);
 
-	rndsh->status = 0;
+	rndsh->guys = 0;
 
 	chdir(p_pluk);
 }
@@ -161,5 +161,5 @@ void home_to_cdr(data_shell *rndsh)
 	set_env("OLDPWD", p_pluk, rndsh);
 	set_env("PWD", home, rndsh);
 	free(p_pluk);
-	rndsh->status = 0;
+	rndsh->guys = 0;
 }

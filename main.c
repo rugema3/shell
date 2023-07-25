@@ -1,73 +1,73 @@
 #include "main.h"
 
 /**
- * free_data - frees data structure
+ * got_data - frees data structure
  *
- * @datash: data structure
+ * @rndsh: data structure
  * Return: no return
  */
-void free_data(data_shell *datash)
+void got_data(data_shell *rndsh)
 {
 	unsigned int i;
 
-	for (i = 0; datash->evision[i]; i++)
+	for (i = 0; rndsh->evision[i]; i++)
 	{
-		free(datash->evision[i]);
+		free(rndsh->evision[i]);
 	}
 
-	free(datash->evision);
-	free(datash->pid);
+	free(rndsh->evision);
+	free(rndsh->pid);
 }
 
 /**
- * set_data - Initialize data structure
+ * ubaka_data - Initialize data structure
  *
- * @datash: data structure
- * @av: argument vector
+ * @rndsh: data structure
+ * @evr: argument vector
  * Return: no return
  */
-void set_data(data_shell *datash, char **av)
+void ubaka_data(data_shell *rndsh, char **evr)
 {
 	unsigned int i;
 
-	datash->av = av;
-	datash->input = NULL;
-	datash->args = NULL;
-	datash->status = 0;
-	datash->counter = 1;
+	rndsh->evr = evr;
+	rndsh->input = NULL;
+	rndsh->args = NULL;
+	rndsh->guys = 0;
+	rndsh->counter = 1;
 
 	for (i = 0; environ[i]; i++)
 		;
 
-	datash->evision = malloc(sizeof(char *) * (i + 1));
+	rndsh->evision = malloc(sizeof(char *) * (i + 1));
 
 	for (i = 0; environ[i]; i++)
 	{
-		datash->evision[i] = haut(environ[i]);
+		rndsh->evision[i] = haut(environ[i]);
 	}
 
-	datash->evision[i] = NULL;
-	datash->pid = conv_num(getpid());
+	rndsh->evision[i] = NULL;
+	rndsh->pid = conv_num(getpid());
 }
 
 /**
- * main - Entry point
+ * maix - Entry point
  *
- * @ac: argument count
- * @av: argument vector
+ * @ax: argument count
+ * @evr: argument vector
  *
  * Return: 0 on success.
  */
-int main(int ac, char **av)
+int main(int ax, char **evr)
 {
-	data_shell datash;
-	(void) ac;
+	data_shell rndsh;
+	(void) ax;
 
 	signal(SIGINT, get_sigint);
-	set_data(&datash, av);
-	shell_loop(&datash);
-	free_data(&datash);
-	if (datash.status < 0)
+	ubaka_data(&rndsh, evr);
+	shell_loop(&rndsh);
+	got_data(&rndsh);
+	if (rndsh.guys < 0)
 		return (255);
-	return (datash.status);
+	return (rndsh.guys);
 }

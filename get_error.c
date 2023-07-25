@@ -35,6 +35,6 @@ int get_feel_error2(data_shell *cowsh, int cat2)
 		free(forr);
 	}
 
-	cowsh->status = cat2;
+	cowsh->guys = cat2;
 	return (cat2);
 }

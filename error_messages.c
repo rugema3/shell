@@ -13,7 +13,7 @@ char *concat_error_message(data_shell *datash, char *msg, char *error, char *lin
 {
 	char *illegal_flag;
 
-	_strap_y(error, datash->av[0]);
+	_strap_y(error, datash->evr[0]);
 	_strap_y(error, ": ");
 	_strap_y(error, line_counter);
 	_strap_y(error, ": ");
@@ -61,7 +61,7 @@ char *get_cd_error_message(data_shell *datash)
 		len_id = guru(datash->args[1]);
 	}
 
-	length = guru(datash->av[0]) + guru(datash->args[0]);
+	length = guru(datash->evr[0]) + guru(datash->args[0]);
 	length += guru(line_counter) + guru(msg) + len_id + 5;
 	error = malloc(sizeof(char) * (length + 1));
 
@@ -90,7 +90,7 @@ char *get_not_found_error(data_shell *datash)
 	char *line_counter;
 
 	line_counter = conv_num(datash->counter);
-	length = guru(datash->av[0]) + guru(line_counter);
+	length = guru(datash->evr[0]) + guru(line_counter);
 	length += guru(datash->args[0]) + 16;
 	error = malloc(sizeof(char) * (length + 1));
 	if (error == 0)
@@ -99,7 +99,7 @@ char *get_not_found_error(data_shell *datash)
 		free(line_counter);
 		return (NULL);
 	}
-	_strap_y(error, datash->av[0]);
+	_strap_y(error, datash->evr[0]);
 	_strap_y(error, ": ");
 	_strap_y(error, line_counter);
 	_strap_y(error, ": ");
@@ -123,7 +123,7 @@ char *get_exit_shell_error(data_shell *datash)
 	char *line_counter;
 
 	line_counter = conv_num(datash->counter);
-	length = guru(datash->av[0]) + guru(line_counter);
+	length = guru(datash->evr[0]) + guru(line_counter);
 	length += guru(datash->args[0]) + guru(datash->args[1]) + 23;
 	error = malloc(sizeof(char) * (length + 1));
 	if (error == 0)
@@ -131,7 +131,7 @@ char *get_exit_shell_error(data_shell *datash)
 		free(line_counter);
 		return (NULL);
 	}
-	_strap_y(error, datash->av[0]);
+	_strap_y(error, datash->evr[0]);
 	_strap_y(error, ": ");
 	_strap_y(error, line_counter);
 	_strap_y(error, ": ");

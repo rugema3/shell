@@ -22,20 +22,20 @@ extern char **environ;
 
 /**
  * struct data - struct that contains all relevant data on runtime
- * @av: argument vector
+ * @evr: argument vector
  * @input: command line written by the user
  * @args: tokens of the command line
- * @status: last status of the shell
+ * @guys: last status of the shell
  * @counter: lines counter
  * @evision: environment variable
  * @pid: process ID of the shell
  */
 typedef struct data
 {
-	char **av;
+	char **evr;
 	char *input;
 	char **args;
-	int status;
+	int guys;
 	int counter;
 	char **evision;
 	char *pid;
@@ -137,7 +137,7 @@ char *without_comment(char *in);
 void shell_loop(data_shell *rndsh);
 
 /* read_line.c */
-char *read_line(int *i_eof);
+char *soma_umur(int *i_eof);
 
 /* split.c */
 char *swap_char(char *input, int bool);
@@ -150,7 +150,7 @@ char **split_line(char *input);
 void check_env(r_var **h, char *in, data_shell *data);
 int check_vars(r_var **h, char *in, char *st, data_shell *data);
 char *replaced_input(r_var **head, char *input, char *new_input, int nlen);
-char *rep_var(char *input, data_shell *rndsh);
+char *indur_var(char *input, data_shell *rndsh);
 
 /* get_line.c */
 void bring_line(char **lineptr, size_t *n, char *buffer, size_t j);
@@ -229,6 +229,6 @@ void help_info_alias(void);
 void help_info_cd(void);
 
 /* get_help.c */
-int get_help(data_shell *rndsh);
+int akir_ubuf(data_shell *rndsh);
 
 #endif

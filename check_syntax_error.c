@@ -123,7 +123,7 @@ void erakan_syntax_ikos(data_shell *rndsh, char *injiza, int verb, int cool)
 	hp2 = ": Syntax error: \"";
 	hp3 = "\" unexpected\n";
 	counter = conv_num(rndsh->counter);
-	ubul = guru(rndsh->av[0]) + guru(counter);
+	ubul = guru(rndsh->evr[0]) + guru(counter);
 	ubul += guru(hp) + guru(hp2) + guru(hp3) + 2;
 
 	ikos = malloc(sizeof(char) * (ubul + 1));
@@ -132,7 +132,7 @@ void erakan_syntax_ikos(data_shell *rndsh, char *injiza, int verb, int cool)
 		free(counter);
 		return;
 	}
-	_strap_y(ikos, rndsh->av[0]);
+	_strap_y(ikos, rndsh->evr[0]);
 	_strap_y(ikos, ": ");
 	_strap_y(ikos, counter);
 	_strap_y(ikos, hp2);

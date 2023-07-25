@@ -14,7 +14,7 @@ char *generate_env_error(data_shell *datash)
 
 	line_counter = conv_num(datash->counter);
 	msg = ": Unable to add/remove from environment\n";
-	length = guru(datash->av[0]) + guru(line_counter);
+	length = guru(datash->evr[0]) + guru(line_counter);
 	length += guru(datash->args[0]) + guru(msg) + 4;
 	error = malloc(sizeof(char) * (length + 1));
 	if (error == NULL)
@@ -24,7 +24,7 @@ char *generate_env_error(data_shell *datash)
 		return (NULL);
 	}
 
-	_strap_y(error, datash->av[0]);
+	_strap_y(error, datash->evr[0]);
 	_strap_y(error, ": ");
 	_strap_y(error, line_counter);
 	_strap_y(error, ": ");
@@ -49,7 +49,7 @@ char *generate_path_126_error(data_shell *datash)
 	char *error;
 
 	line_counter = conv_num(datash->counter);
-	length = guru(datash->av[0]) + guru(line_counter);
+	length = guru(datash->evr[0]) + guru(line_counter);
 	length += guru(datash->args[0]) + 24;
 	error = malloc(sizeof(char) * (length + 1));
 	if (error == NULL)
@@ -58,7 +58,7 @@ char *generate_path_126_error(data_shell *datash)
 		free(line_counter);
 		return (NULL);
 	}
-	_strap_y(error, datash->av[0]);
+	_strap_y(error, datash->evr[0]);
 	_strap_y(error, ": ");
 	_strap_y(error, line_counter);
 	_strap_y(error, ": ");

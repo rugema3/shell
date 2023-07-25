@@ -190,7 +190,7 @@ int cmd_exec(data_shell *datash)
 	}
 	else if (pd < 0)
 	{
-		perror(datash->av[0]);
+		perror(datash->evr[0]);
 		return (1);
 	}
 	else
@@ -200,6 +200,6 @@ int cmd_exec(data_shell *datash)
 		} while (!WIFEXITED(state) && !WIFSIGNALED(state));
 	}
 
-	datash->status = state / 256;
+	datash->guys = state / 256;
 	return (1);
 }

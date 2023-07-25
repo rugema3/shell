@@ -74,7 +74,7 @@ int ibik(data_shell *datash)
 		write(STDOUT_FILENO, datash->evision[i], j);
 		write(STDOUT_FILENO, "\n", 1);
 	}
-	datash->status = 0;
+	datash->guys = 0;
 
 	return (1);
 }
