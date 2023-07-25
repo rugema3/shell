@@ -95,7 +95,7 @@ int econ_char(char *injiza, int *j)
 
 /**
  * erakan_syntax_ikos - prints when a syntax error is found
- * aux_itaor - function that takes an integer argument and returns a char
+ * conv_num - function that takes an integer argument and returns a char
  * @rndsh: data structure
  * @injiza: input string
  * @j: index of the error
@@ -123,7 +123,7 @@ void erakan_syntax_ikos(data_shell *rndsh, char *injiza, int j, int cool)
 
 	hp2 = ": Syntax error: \"";
 	hp3 = "\" unexpected\n";
-	counter = aux_itaor(rndsh->counter);
+	counter = conv_num(rndsh->counter);
 	ubul = _strlen(rndsh->av[0]) + _strlen(counter);
 	ubul += _strlen(hp) + _strlen(hp2) + _strlen(hp3) + 2;
 
@@ -133,13 +133,13 @@ void erakan_syntax_ikos(data_shell *rndsh, char *injiza, int j, int cool)
 		free(counter);
 		return;
 	}
-	_strcpy(ikos, rndsh->av[0]);
-	_strcat(ikos, ": ");
-	_strcat(ikos, counter);
-	_strcat(ikos, hp2);
-	_strcat(ikos, hp);
-	_strcat(ikos, hp3);
-	_strcat(ikos, "\0");
+	_strcp_y(ikos, rndsh->av[0]);
+	_strxat(ikos, ": ");
+	_strxat(ikos, counter);
+	_strxat(ikos, hp2);
+	_strxat(ikos, hp);
+	_strxat(ikos, hp3);
+	_strxat(ikos, "\0");
 
 	write(STDERR_FILENO, ikos, ubul);
 	free(ikos);
