@@ -84,10 +84,10 @@ void add_nodes(sep_list **head_s, line_list **head_l, char *input)
  *
  * @list_s: separator list
  * @list_l: command line list
- * @datash: data structure
+ * @rndsh: data structure
  * Return: no return
  */
-void go_next(sep_list **list_s, line_list **list_l, data_shell *datash)
+void go_next(sep_list **list_s, line_list **list_l, data_shell *rndsh)
 {
 	int loop_sep;
 	sep_list *ls_s;
@@ -99,7 +99,7 @@ void go_next(sep_list **list_s, line_list **list_l, data_shell *datash)
 
 	while (ls_s != NULL && loop_sep)
 	{
-		if (datash->status == 0)
+		if (rndsh->status == 0)
 		{
 			if (ls_s->separator == '&' || ls_s->separator == ';')
 				loop_sep = 0;
@@ -125,11 +125,11 @@ void go_next(sep_list **list_s, line_list **list_l, data_shell *datash)
  * split_commands - splits command lines according to
  * the separators ;, | and &, and executes them
  *
- * @datash: data structure
+ * @rndsh: data structure
  * @input: input string
  * Return: 0 to exit, 1 to continue
  */
-int split_commands(data_shell *datash, char *input)
+int split_commands(data_shell *rndsh, char *input)
 {
 
 	sep_list *head_s, *list_s;
@@ -146,15 +146,15 @@ int split_commands(data_shell *datash, char *input)
 
 	while (list_l != NULL)
 	{
-		datash->input = list_l->line;
-		datash->args = split_line(datash->input);
-		loop = exec_line(datash);
-		free(datash->args);
+		rndsh->input = list_l->line;
+		rndsh->args = split_line(rndsh->input);
+		loop = iher_umur(rndsh);
+		free(rndsh->args);
 
 		if (loop == 0)
 			break;
 
-		go_next(&list_s, &list_l, datash);
+		go_next(&list_s, &list_l, rndsh);
 
 		if (list_l != NULL)
 			list_l = list_l->next;
@@ -197,7 +197,7 @@ char **split_line(char *input)
 		if (i == bsize)
 		{
 			bsize += TOK_BUFSIZE;
-			tokens = _reallocdp(tokens, i, sizeof(char *) * bsize);
+			tokens = dem_realloc_m(tokens, i, sizeof(char *) * bsize);
 			if (tokens == NULL)
 			{
 				write(STDERR_FILENO, ": allocation error\n", 18);
