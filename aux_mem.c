@@ -1,91 +1,91 @@
 #include "main.h"
 
 /**
- * colg - copies information between void pointers.
- * @str_grm: destination pointer.
- * @grm: source pointer.
- * @ingan: size of the new pointer.
+ * _memcpy - copies information between void pointers.
+ * @newptr: destination pointer.
+ * @ptr: source pointer.
+ * @size: size of the new pointer.
  *
  * Return: no return.
  */
-void colg(void *str_grm, const void *grm, unsigned int ingan)
+void _memcpy(void *newptr, const void *ptr, unsigned int size)
 {
-	char *char_grm = (char *)grm;
-	char *char_str_grm = (char *)str_grm;
-	unsigned int j;
+	char *char_ptr = (char *)ptr;
+	char *char_newptr = (char *)newptr;
+	unsigned int i;
 
-	for (j = 0; j < ingan; j++)
-		char_str_grm[j] = char_grm[j];
+	for (i = 0; i < size; i++)
+		char_newptr[i] = char_ptr[i];
 }
 
 /**
- * dem_realloc - reallocates a memory block.
- * @grm: pointer to the memory previously allocated.
- * @byte: size, in bytes, of the allocated space of grm.
- * @bytes: new size, in bytes, of the new memory block.
+ * _realloc - reallocates a memory block.
+ * @ptr: pointer to the memory previously allocated.
+ * @old_size: size, in bytes, of the allocated space of ptr.
+ * @new_size: new size, in bytes, of the new memory block.
  *
- * Return: grm.
- * if bytes == byte, returns grm without changes.
+ * Return: ptr.
+ * if new_size == old_size, returns ptr without changes.
  * if malloc fails, returns NULL.
  */
-void *dem_realloc(void *grm, unsigned int byte, unsigned int bytes)
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	void *str_grm;
+	void *newptr;
 
-	if (grm == NULL)
-		return (malloc(bytes));
+	if (ptr == NULL)
+		return (malloc(new_size));
 
-	if (bytes == 0)
+	if (new_size == 0)
 	{
-		free(grm);
+		free(ptr);
 		return (NULL);
 	}
 
-	if (bytes == byte)
-		return (grm);
+	if (new_size == old_size)
+		return (ptr);
 
-	str_grm = malloc(bytes);
-	if (str_grm == NULL)
+	newptr = malloc(new_size);
+	if (newptr == NULL)
 		return (NULL);
 
-	if (bytes < byte)
-		colg(str_grm, grm, bytes);
+	if (new_size < old_size)
+		_memcpy(newptr, ptr, new_size);
 	else
-		colg(str_grm, grm, byte);
+		_memcpy(newptr, ptr, old_size);
 
-	free(grm);
-	return (str_grm);
+	free(ptr);
+	return (newptr);
 }
 
 /**
- * dem_realloc_m - reallocates a memory block of a double pointer.
- * @grm: double pointer to the memory previously allocated.
- * @byte: size, in bytes, of the allocated space of grm.
- * @bytes: new size, in bytes, of the new memory block.
+ * _reallocdp - reallocates a memory block of a double pointer.
+ * @ptr: double pointer to the memory previously allocated.
+ * @old_size: size, in bytes, of the allocated space of ptr.
+ * @new_size: new size, in bytes, of the new memory block.
  *
- * Return: grm.
- * if bytes == byte, returns grm without changes.
+ * Return: ptr.
+ * if new_size == old_size, returns ptr without changes.
  * if malloc fails, returns NULL.
  */
-char **dem_realloc_m(char **grm, unsigned int byte, unsigned int bytes)
+char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size)
 {
-	char **str_grm;
-	unsigned int j;
+	char **newptr;
+	unsigned int i;
 
-	if (grm == NULL)
-		return (malloc(sizeof(char *) * bytes));
+	if (ptr == NULL)
+		return (malloc(sizeof(char *) * new_size));
 
-	if (bytes == byte)
-		return (grm);
+	if (new_size == old_size)
+		return (ptr);
 
-	str_grm = malloc(sizeof(char *) * bytes);
-	if (str_grm == NULL)
+	newptr = malloc(sizeof(char *) * new_size);
+	if (newptr == NULL)
 		return (NULL);
 
-	for (j = 0; j < byte; j++)
-		str_grm[j] = grm[j];
+	for (i = 0; i < old_size; i++)
+		newptr[i] = ptr[i];
 
-	free(grm);
+	free(ptr);
 
-	return (str_grm);
+	return (newptr);
 }

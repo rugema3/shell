@@ -70,11 +70,11 @@ void add_nodes(sep_list **head_s, line_list **head_l, char *input)
 		}
 	}
 
-	line = _strtok(input, ";|&");
+	line = right(input, ";|&");
 	do {
 		line = swap_char(line, 1);
 		lead_stuff(head_l, line);
-		line = _strtok(NULL, ";|&");
+		line = right(NULL, ";|&");
 	} while (line != NULL);
 
 }
@@ -99,7 +99,11 @@ void go_next(sep_list **list_s, line_list **list_l, data_shell *rndsh)
 
 	while (ls_s != NULL && loop_sep)
 	{
+<<<<<<< HEAD
 		if (rndsh->status == 0)
+=======
+		if (datash->guys == 0)
+>>>>>>> c6ab2970e262ff47799e213be0c0c9ab02d1cda4
 		{
 			if (ls_s->separator == '&' || ls_s->separator == ';')
 				loop_sep = 0;
@@ -146,10 +150,17 @@ int split_commands(data_shell *rndsh, char *input)
 
 	while (list_l != NULL)
 	{
+<<<<<<< HEAD
 		rndsh->input = list_l->line;
 		rndsh->args = split_line(rndsh->input);
 		loop = iher_umur(rndsh);
 		free(rndsh->args);
+=======
+		datash->input = list_l->line;
+		datash->args = split_line(datash->input);
+		loop = iher_umur(datash);
+		free(datash->args);
+>>>>>>> c6ab2970e262ff47799e213be0c0c9ab02d1cda4
 
 		if (loop == 0)
 			break;
@@ -189,7 +200,7 @@ char **split_line(char *input)
 		exit(EXIT_FAILURE);
 	}
 
-	token = _strtok(input, TOK_DELIM);
+	token = right(input, TOK_DELIM);
 	tokens[0] = token;
 
 	for (i = 1; token != NULL; i++)
@@ -204,7 +215,7 @@ char **split_line(char *input)
 				exit(EXIT_FAILURE);
 			}
 		}
-		token = _strtok(NULL, TOK_DELIM);
+		token = right(NULL, TOK_DELIM);
 		tokens[i] = token;
 	}
 

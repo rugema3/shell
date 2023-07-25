@@ -14,8 +14,8 @@ char *generate_env_error(data_shell *datash)
 
 	line_counter = conv_num(datash->counter);
 	msg = ": Unable to add/remove from environment\n";
-	length = _strlen(datash->av[0]) + _strlen(line_counter);
-	length += _strlen(datash->args[0]) + _strlen(msg) + 4;
+	length = guru(datash->evr[0]) + guru(line_counter);
+	length += guru(datash->args[0]) + guru(msg) + 4;
 	error = malloc(sizeof(char) * (length + 1));
 	if (error == NULL)
 	{
@@ -24,13 +24,13 @@ char *generate_env_error(data_shell *datash)
 		return (NULL);
 	}
 
-	_strcpy(error, datash->av[0]);
-	_strcat(error, ": ");
-	_strcat(error, line_counter);
-	_strcat(error, ": ");
-	_strcat(error, datash->args[0]);
-	_strcat(error, msg);
-	_strcat(error, "\0");
+	_strap_y(error, datash->evr[0]);
+	_strap_y(error, ": ");
+	_strap_y(error, line_counter);
+	_strap_y(error, ": ");
+	_strap_y(error, datash->args[0]);
+	_strap_y(error, msg);
+	_strap_y(error, "\0");
 	free(line_counter);
 
 	return (error);
@@ -49,8 +49,8 @@ char *generate_path_126_error(data_shell *datash)
 	char *error;
 
 	line_counter = conv_num(datash->counter);
-	length = _strlen(datash->av[0]) + _strlen(line_counter);
-	length += _strlen(datash->args[0]) + 24;
+	length = guru(datash->evr[0]) + guru(line_counter);
+	length += guru(datash->args[0]) + 24;
 	error = malloc(sizeof(char) * (length + 1));
 	if (error == NULL)
 	{
@@ -58,13 +58,13 @@ char *generate_path_126_error(data_shell *datash)
 		free(line_counter);
 		return (NULL);
 	}
-	_strcpy(error, datash->av[0]);
-	_strcat(error, ": ");
-	_strcat(error, line_counter);
-	_strcat(error, ": ");
-	_strcat(error, datash->args[0]);
-	_strcat(error, ": Permission denied\n");
-	_strcat(error, "\0");
+	_strap_y(error, datash->evr[0]);
+	_strap_y(error, ": ");
+	_strap_y(error, line_counter);
+	_strap_y(error, ": ");
+	_strap_y(error, datash->args[0]);
+	_strap_y(error, ": Permission denied\n");
+	_strap_y(error, "\0");
 	free(line_counter);
 	return (error);
 }

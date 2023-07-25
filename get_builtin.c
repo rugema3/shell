@@ -8,19 +8,19 @@
 int (*get_builtin(char *cmd))(data_shell *)
 {
 	builtin_t builtin[] = {
-		{ "env", _env },
+		{ "env", ibik },
 		{ "exit", exit_shell },
 		{ "setenv", _setenv },
 		{ "unsetenv", _unsetenv },
 		{ "cd", rnd_catch },
-		{ "help", get_help },
+		{ "help", akir_ubuf },
 		{ NULL, NULL }
 	};
 	int i;
 
 	for (i = 0; builtin[i].name; i++)
 	{
-		if (_strcmp(builtin[i].name, cmd) == 0)
+		if (strcap_e(builtin[i].name, cmd) == 0)
 			break;
 	}
 

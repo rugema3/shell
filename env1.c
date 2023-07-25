@@ -3,18 +3,18 @@
 /**
  * vxp_env_izi - compares env variables names
  * with the name passed.
- * @zeb: name of the environment variable
- * @izin: name passed
+ * @nenv: name of the environment variable
+ * @name: name passed
  *
  * Return: 0 if are not equal. Another value if they are.
  */
-int vxp_env_izi(const char *zeb, const char *izin)
+int vxp_env_izi(const char *nenv, const char *name)
 {
 	int i;
 
-	for (i = 0; zeb[i] != '='; i++)
+	for (i = 0; nenv[i] != '='; i++)
 	{
-		if (zeb[i] != izin[i])
+		if (nenv[i] != name[i])
 		{
 			return (0);
 		}
@@ -25,56 +25,56 @@ int vxp_env_izi(const char *zeb, const char *izin)
 
 /**
  * akirenv - get an environment variable
- * @izin: name of the environment variable
+ * @name: name of the environment variable
  * @evision: environment variable
  *
  * Return: value of the environment variable if is found.
  * In other case, returns NULL.
  */
-char *akirenv(const char *izin, char **evision)
+char *akirenv(const char *name, char **evision)
 {
-	char *env_gtr;
-	int i, kur;
+	char *ptr_env;
+	int i, mov;
 
-	/* Initialize env_gtr value */
-	env_gtr = NULL;
-	kur = 0;
+	/* Initialize ptr_env value */
+	ptr_env = NULL;
+	mov = 0;
 	/* Compare all environment variables */
 	/* environ is declared in the header file */
 	for (i = 0; evision[i]; i++)
 	{
 		/* If name and env are equal */
-		kur = vxp_env_izi(evision[i], izin);
-		if (kur)
+		mov = vxp_env_izi(evision[i], name);
+		if (mov)
 		{
-			env_gtr = evision[i];
+			ptr_env = evision[i];
 			break;
 		}
 	}
 
-	return (env_gtr + kur);
+	return (ptr_env + mov);
 }
 
 /**
  * ibik - prints the evironment variables
  *
- * @rndsh: data relevant.
+ * @datash: data relevant.
  * Return: 1 on success.
  */
-int ibik(data_shell *rndsh)
+int ibik(data_shell *datash)
 {
 	int i, j;
 
-	for (i = 0; rndsh->_environ[i]; i++)
+	for (i = 0; datash->evision[i]; i++)
 	{
 
-		for (j = 0; rndsh->_environ[i][j]; j++)
+		for (j = 0; datash->evision[i][j]; j++)
 			;
 
-		write(STDOUT_FILENO, rndsh->_environ[i], j);
+		write(STDOUT_FILENO, datash->evision[i], j);
 		write(STDOUT_FILENO, "\n", 1);
 	}
-	rndsh->status = 0;
+	datash->guys = 0;
 
 	return (1);
 }

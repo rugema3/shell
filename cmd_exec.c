@@ -26,40 +26,40 @@ int is_cdir(char *path, int *i)
  * _which - locates a command
  *
  * @cmd: command name
- * @_environ: environment variable
+ * @evision: environment variable
  * Return: location of the command.
  */
-char *_which(char *cmd, char **_environ)
+char *_which(char *cmd, char **evision)
 {
 	char *path, *ptr_path, *token_path, *dir;
 	int len_dir, len_cmd, i;
 	struct stat st;
 
-	path = _getenv("PATH", _environ);
+	path = akirenv("PATH", evision);
 	if (path)
 	{
-		ptr_path = _strdup(path);
-		len_cmd = _strlen(cmd);
-		token_path = _strtok(ptr_path, ":");
+		ptr_path = haut(path);
+		len_cmd = guru(cmd);
+		token_path = right(ptr_path, ":");
 		i = 0;
 		while (token_path != NULL)
 		{
 			if (is_cdir(path, &i))
 				if (stat(cmd, &st) == 0)
 					return (cmd);
-			len_dir = _strlen(token_path);
+			len_dir = guru(token_path);
 			dir = malloc(len_dir + len_cmd + 2);
-			_strcpy(dir, token_path);
-			_strcat(dir, "/");
-			_strcat(dir, cmd);
-			_strcat(dir, "\0");
+			_strap_y(dir, token_path);
+			_strpuss(dir, "/");
+			_strpuss(dir, cmd);
+			_strpuss(dir, "\0");
 			if (stat(dir, &st) == 0)
 			{
 				free(ptr_path);
 				return (dir);
 			}
 			free(dir);
-			token_path = _strtok(NULL, ":");
+			token_path = right(NULL, ":");
 		}
 		free(ptr_path);
 		if (stat(cmd, &st) == 0)
@@ -132,7 +132,7 @@ int check_error_cmd(char *dir, data_shell *datash)
 		return (1);
 	}
 
-	if (_strcmp(datash->args[0], dir) != 0)
+	if (strcap_e(datash->args[0], dir) != 0)
 	{
 		if (access(dir, X_OK) == -1)
 		{
@@ -174,7 +174,7 @@ int cmd_exec(data_shell *datash)
 		return (1);
 	if (exec == 0)
 	{
-		dir = _which(datash->args[0], datash->_environ);
+		dir = _which(datash->args[0], datash->evision);
 		if (check_error_cmd(dir, datash) == 1)
 			return (1);
 	}
@@ -183,14 +183,14 @@ int cmd_exec(data_shell *datash)
 	if (pd == 0)
 	{
 		if (exec == 0)
-			dir = _which(datash->args[0], datash->_environ);
+			dir = _which(datash->args[0], datash->evision);
 		else
 			dir = datash->args[0];
-		execve(dir + exec, datash->args, datash->_environ);
+		execve(dir + exec, datash->args, datash->evision);
 	}
 	else if (pd < 0)
 	{
-		perror(datash->av[0]);
+		perror(datash->evr[0]);
 		return (1);
 	}
 	else
@@ -200,6 +200,6 @@ int cmd_exec(data_shell *datash)
 		} while (!WIFEXITED(state) && !WIFSIGNALED(state));
 	}
 
-	datash->status = state / 256;
+	datash->guys = state / 256;
 	return (1);
 }

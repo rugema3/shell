@@ -1,31 +1,31 @@
 #include "main.h"
 
 /**
- * suzum - checks if the typed variable is an env variable
+ * suzum_env - checks if the typed variable is an env variable
  *
  * @d: head of linked list
  * @ips: input string
  * @rat: data structure
  * Return: no return
  */
-void suzum(r_var **d, char *ips, data_shell *rat)
+void suzum_env(r_var **d, char *ips, data_shell *rat)
 {
-	int col, xhr, j, lval;
+	int umurongo, xhr, j, uburo;
 	char **_envr;
 
-	_envr = rat->_environ;
-	for (col = 0; _envr[col]; col++)
+	_envr = rat->evision;
+	for (umurongo = 0; _envr[umurongo]; umurongo++)
 	{
-		for (j = 1, xhr = 0; _envr[col][xhr]; xhr++)
+		for (j = 1, xhr = 0; _envr[umurongo][xhr]; xhr++)
 		{
-			if (_envr[col][xhr] == '=')
+			if (_envr[umurongo][xhr] == '=')
 			{
-				lval = _strlen(_envr[col] + xhr + 1);
-				sky_blue_cloud(d, j, _envr[col] + xhr + 1, lval);
+				uburo = guru(_envr[umurongo] + xhr + 1);
+				sky_blue_cloud(d, j, _envr[umurongo] + xhr + 1, uburo);
 				return;
 			}
 
-			if (ips[j] == _envr[col][xhr])
+			if (ips[j] == _envr[umurongo][xhr])
 				j++;
 			else
 				break;
@@ -46,25 +46,25 @@ void suzum(r_var **d, char *ips, data_shell *rat)
  *
  * @d: head of the linked list
  * @ips: input string
- * @ft: last status of the Shell
+ * @foot: last status of the Shell
  * @rat: data structure
  * Return: no return
  */
-int suzum_vars(r_var **d, char *ips, char *ft, data_shell *rat)
+int suzum_vars(r_var **d, char *ips, char *foot, data_shell *rat)
 {
-	int i, sxt, 1pd;
+	int i, sxt, lpd;
 
-	sxt = _strlen(ft);
-	1pd = _strlen(rat->pid);
+	sxt = guru(foot);
+	lpd = guru(rat->pid);
 
 	for (i = 0; ips[i]; i++)
 	{
 		if (ips[i] == '$')
 		{
 			if (ips[i + 1] == '?')
-				sky_blue_cloud(d, 2, ft, sxt), i++;
+				sky_blue_cloud(d, 2, foot, sxt), i++;
 			else if (ips[i + 1] == '$')
-				sky_blue_cloud(d, 2, rat->pid, 1pd), i++;
+				sky_blue_cloud(d, 2, rat->pid, lpd), i++;
 			else if (ips[i + 1] == '\n')
 				sky_blue_cloud(d, 0, NULL, 0);
 			else if (ips[i + 1] == '\0')
@@ -76,7 +76,7 @@ int suzum_vars(r_var **d, char *ips, char *ft, data_shell *rat)
 			else if (ips[i + 1] == ';')
 				sky_blue_cloud(d, 0, NULL, 0);
 			else
-				suzum(d, ips + i, rat);
+				suzum_env(d, ips + i, rat);
 		}
 	}
 
@@ -88,23 +88,23 @@ int suzum_vars(r_var **d, char *ips, char *ft, data_shell *rat)
  *
  * @hejur: head of the linked list
  * @zxput: input string
- * @new_input: new input string (replaced)
- * @nlen: new length
+ * @new_zxput: new input string (replaced)
+ * @rlen: new length
  * Return: replaced string
  */
-char *hindur_input(r_var **hejur, char *zxput, char *new_input, int nlen)
+char *hindur_input(r_var **hejur, char *zxput, char *new_zxput, int rlen)
 {
 	r_var *inht;
 	int i, j, k;
 
 	inht = *hejur;
-	for (j = i = 0; i < nlen; i++)
+	for (j = i = 0; i < rlen; i++)
 	{
 		if (zxput[j] == '$')
 		{
 			if (!(inht->len_var) && !(inht->len_val))
 			{
-				new_input[i] = zxput[j];
+				new_zxput[i] = zxput[j];
 				j++;
 			}
 			else if (inht->len_var && !(inht->len_val))
@@ -117,7 +117,7 @@ char *hindur_input(r_var **hejur, char *zxput, char *new_input, int nlen)
 			{
 				for (k = 0; k < inht->len_val; k++)
 				{
-					new_input[i] = inht->val[k];
+					new_zxput[i] = inht->val[k];
 					i++;
 				}
 				j += (inht->len_var);
@@ -127,56 +127,57 @@ char *hindur_input(r_var **hejur, char *zxput, char *new_input, int nlen)
 		}
 		else
 		{
-			new_input[i] = zxput[j];
+			new_zxput[i] = zxput[j];
 			j++;
 		}
 	}
 
-	return (new_input);
+	return (new_zxput);
 }
+
 /**
  * indur_var - calls functions to replace string into vars
  *
  * @zxput: input string
- * @datash: data structure
+ * @rndsh: data structure
  * Return: replaced string
  */
-char *indur_var(char *zxput, data_shell *datash)
+char *indur_var(char *zxput, data_shell *rndsh)
 {
 	r_var *hejur, *inht;
-	char *status, *new_input;
-	int olen, nlen;
+	char *guys, *new_zxput;
+	int blen, rlen;
 
-	status = conv_num(datash->status);
+	guys = conv_num(rndsh->guys);
 	hejur = NULL;
 
-	olen = suzum_vars(&hejur, zxput, status, datash);
+	blen = suzum_vars(&hejur, zxput, guys, rndsh);
 
 	if (hejur == NULL)
 	{
-		free(status);
+		free(guys);
 		return (zxput);
 	}
 
 	inht = hejur;
-	nlen = 0;
+	rlen = 0;
 
 	while (inht != NULL)
 	{
-		nlen += (inht->len_val - inht->len_var);
+		rlen += (inht->len_val - inht->len_var);
 		inht = inht->next;
 	}
 
-	nlen += olen;
+	rlen += blen;
 
-	new_input = malloc(sizeof(char) * (nlen + 1));
-	new_input[nlen] = '\0';
+	new_zxput = malloc(sizeof(char) * (rlen + 1));
+	new_zxput[rlen] = '\0';
 
-	new_input = hindur_input(&hejur, zxput, new_input, nlen);
+	new_zxput = hindur_input(&hejur, zxput, new_zxput, rlen);
 
 	free(zxput);
-	free(status);
+	free(guys);
 	ladder_lift_up(&hejur);
 
-	return (new_input);
+	return (new_zxput);
 }

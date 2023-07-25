@@ -15,30 +15,30 @@ int rnd_catch(data_shell *cowsh)
 
 	if (tir != NULL)
 	{
-		given = _strcmp("$HOME", tir);
-		fill = _strcmp("~", tir);
-		spoon = _strcmp("--", tir);
+		given = strcap_e("$HOME", tir);
+		fill = strcap_e("~", tir);
+		spoon = strcap_e("--", tir);
 	}
 
 	if (tir == NULL || !given || !fill || !spoon)
 	{
-		cd_to_home(cowsh);
+		home_to_cdr(cowsh);
 		return (1);
 	}
 
-	if (_strcmp("-", tir) == 0)
+	if (strcap_e("-", tir) == 0)
 	{
-		cd_previous(cowsh);
+		previous_cmd(cowsh);
 		return (1);
 	}
 
-	if (_strcmp(".", tir) == 0 || _strcmp("..", tir) == 0)
+	if (strcap_e(".", tir) == 0 || strcap_e("..", tir) == 0)
 	{
-		cd_dot(cowsh);
+		_dot(cowsh);
 		return (1);
 	}
 
-	cd_to(cowsh);
+	dot_cmd(cowsh);
 
 	return (1);
 }

@@ -16,16 +16,16 @@ int exit_shell(data_shell *datash)
 	if (datash->args[1] != NULL)
 	{
 		ustatus = str_oax(datash->args[1]);
-		is_digit = _isdigit(datash->args[1]);
-		str_len = _strlen(datash->args[1]);
+		is_digit = cnombre(datash->args[1]);
+		str_len = guru(datash->args[1]);
 		big_number = ustatus > (unsigned int)INT_MAX;
 		if (!is_digit || str_len > 10 || big_number)
 		{
 			get_feel_error2(datash, 2);
-			datash->status = 2;
+			datash->guys = 2;
 			return (1);
 		}
-		datash->status = (ustatus % 256);
+		datash->guys = (ustatus % 256);
 	}
 	return (0);
 }

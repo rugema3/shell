@@ -1,106 +1,106 @@
 #include "main.h"
 
 /**
- * _strxat - concatenate two strings
+ * _strpuss - concatenate two strings
  * @best: char pointer the dest of the copied str
  * @srcm: const char pointer the source of str
  * Return: the dest
  */
-char *_strxat(char *best, const char *srcm)
+char *_strpuss(char *best, const char *srcm)
 {
-	int i;
-	int j;
+	int trop;
+	int jik;
 
-	for (i = 0; best[i] != '\0'; i++)
+	for (trop = 0; best[trop] != '\0'; trop++)
 		;
 
-	for (j = 0; srcm[j] != '\0'; j++)
+	for (jik = 0; srcm[jik] != '\0'; jik++)
 	{
-		best[i] = srcm[j];
-		i++;
+		best[trop] = srcm[jik];
+		trop++;
 	}
 
-	best[i] = '\0';
+	best[trop] = '\0';
 	return (best);
 }
 /**
- * *_strcp_y - Copies the string pointed to by src.
+ * *_strap_y - Copies the string pointed to by src.
  * @best: Type char pointer the dest of the copied str
  * @srcm: Type char pointer the source of str
  * Return: the dest.
  */
-char *_strcp_y(char *best, char *srcm)
+char *_strap_y(char *best, char *srcm)
 {
 
-	size_t y;
+	size_t a;
 
-	for (y = 0; srcm[y] != '\0'; y++)
+	for (a = 0; srcm[a] != '\0'; a++)
 	{
-		best[y] = srcm[y];
+		best[a] = srcm[a];
 	}
-	best[y] = '\0';
+	best[a] = '\0';
 
 	return (best);
 }
 /**
- * strcmp_e - Function that compares two strings.
+ * strcap_e - Function that compares two strings.
  * @b1: type str compared
  * @b2: type str compared
  * Return: Always 0.
  */
-int strcmp_e(char *b1, char *b2)
+int strcap_e(char *b1, char *b2)
 {
-	int i;
+	int trop;
 
-	for (i = 0; b1[i] == b2[i] && b1[i]; i++)
+	for (trop = 0; b1[trop] == b2[trop] && b1[trop]; trop++)
 		;
 
-	if (b1[i] > b2[i])
+	if (b1[trop] > b2[trop])
 		return (1);
-	if (b1[i] < b2[i])
+	if (b1[trop] < b2[trop])
 		return (-1);
 	return (0);
 }
 /**
- * strchr_load - locates a character in a string,
+ * strchrap_load - locates a character in a string,
  * @b: string.
- * @d: character.
+ * @charac: character.
  * Return: the pointer to the first occurrence of the character c.
  */
-char *strchr_load(char *b, char d)
+char *strchrap_load(char *b, char charac)
 {
-	unsigned int i = 0;
+	unsigned int trop = 0;
 
-	for (; *(b + i) != '\0'; i++)
-		if (*(b + i) == d)
-			return (b + i);
-	if (*(b + i) == d)
-		return (b + i);
+	for (; *(b + trop) != '\0'; trop++)
+		if (*(b + trop) == charac)
+			return (b + trop);
+	if (*(b + trop) == charac)
+		return (b + trop);
 	return ('\0');
 }
 /**
- * strspn_load - gets the length of a prefix substring.
+ * strsnap_load - gets the length of a prefix substring.
  * @b: initial segment.
- * @except: accepted bytes.
+ * @expat: accepted bytes.
  * Return: the number of accepted bytes.
  */
-int strspn_load(char *b, char *except)
+int strsnap_load(char *b, char *expat)
 {
-	int i, j, cool;
+	int trop, jik, bool;
 
-	for (i = 0; *(b + i) != '\0'; i++)
+	for (trop = 0; *(b + trop) != '\0'; trop++)
 	{
-		cool = 1;
-		for (j = 0; *(except + j) != '\0'; j++)
+		bool = 1;
+		for (jik = 0; *(expat + jik) != '\0'; jik++)
 		{
-			if (*(b + i) == *(except + j))
+			if (*(b + trop) == *(expat + jik))
 			{
-				cool = 0;
+				bool = 0;
 				break;
 			}
 		}
-		if (cool == 1)
+		if (bool == 1)
 			break;
 	}
-	return (i);
+	return (trop);
 }
