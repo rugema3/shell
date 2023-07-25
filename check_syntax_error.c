@@ -1,89 +1,89 @@
 #include "main.h"
 
 /**
- * repeated_char - counts the repetitions of a char
+ * sleeve_chr - counts the repetitions of a char
  *
- * @input: input string
- * @i: index
+ * @injiza: input string
+ * @verb: index
  * Return: repetitions
  */
-int repeated_char(char *input, int i)
+int sleeve_chr(char *injiza, int verb)
 {
-	if (*(input - 1) == *input)
-		return (repeated_char(input - 1, i + 1));
+	if (*(injiza - 1) == *injiza)
+		return (sleeve_chr(injiza - 1, verb + 1));
 
-	return (i);
+	return (verb);
 }
 
 /**
- * error_sep_op - finds syntax errors
+ * snoop_error_og - finds syntax errors
  *
- * @input: input string
- * @i: index
- * @last: last char read
+ * @injiza: input string
+ * @verb: index
+ * @snoop: last char read
  * Return: index of error. 0 when there are no
  * errors
  */
-int error_sep_op(char *input, int i, char last)
+int snoop_error_og(char *injiza, int verb, char snoop)
 {
-	int count;
+	int ball;
 
-	count = 0;
-	if (*input == '\0')
+	ball = 0;
+	if (*injiza == '\0')
 		return (0);
 
-	if (*input == ' ' || *input == '\t')
-		return (error_sep_op(input + 1, i + 1, last));
+	if (*injiza == ' ' || *injiza == '\t')
+		return (snoop_error_og(injiza + 1, verb + 1, snoop));
 
-	if (*input == ';')
-		if (last == '|' || last == '&' || last == ';')
-			return (i);
+	if (*injiza == ';')
+		if (snoop == '|' || snoop == '&' || snoop == ';')
+			return (verb);
 
-	if (*input == '|')
+	if (*injiza == '|')
 	{
-		if (last == ';' || last == '&')
-			return (i);
+		if (snoop == ';' || snoop == '&')
+			return (verb);
 
-		if (last == '|')
+		if (snoop == '|')
 		{
-			count = repeated_char(input, 0);
-			if (count == 0 || count > 1)
-				return (i);
+			ball = sleeve_chr(injiza, 0);
+			if (ball == 0 || ball > 1)
+				return (verb);
 		}
 	}
 
-	if (*input == '&')
+	if (*injiza == '&')
 	{
-		if (last == ';' || last == '|')
-			return (i);
+		if (snoop == ';' || snoop == '|')
+			return (verb);
 
-		if (last == '&')
+		if (snoop == '&')
 		{
-			count = repeated_char(input, 0);
-			if (count == 0 || count > 1)
-				return (i);
+			ball = sleeve_chr(injiza, 0);
+			if (ball == 0 || ball > 1)
+				return (verb);
 		}
 	}
 
-	return (error_sep_op(input + 1, i + 1, *input));
+	return (snoop_error_og(injiza + 1, verb + 1, *injiza));
 }
 
 /**
- * first_char - finds index of the first char
+ * econ_char - finds index of the first char
  *
- * @input: input string
- * @i: index
+ * @injiza: input string
+ * @verb: index
  * Return: 1 if there is an error. 0 in other case.
  */
-int first_char(char *input, int *i)
+int econ_char(char *injiza, int *verb)
 {
 
-	for (*i = 0; input[*i]; *i += 1)
+	for (*verb = 0; injiza[*verb]; *verb += 1)
 	{
-		if (input[*i] == ' ' || input[*i] == '\t')
+		if (injiza[*verb] == ' ' || injiza[*verb] == '\t')
 			continue;
 
-		if (input[*i] == ';' || input[*i] == '|' || input[*i] == '&')
+		if (injiza[*verb] == ';' || injiza[*verb] == '|' || injiza[*verb] == '&')
 			return (-1);
 
 		break;
@@ -93,83 +93,83 @@ int first_char(char *input, int *i)
 }
 
 /**
- * print_syntax_error - prints when a syntax error is found
+ * erakan_syntax_ikos - prints when a syntax error is found
  *
- * @datash: data structure
- * @input: input string
- * @i: index of the error
- * @bool: to control msg error
+ * @rndsh: data structure
+ * @injiza: input string
+ * @verb: index of the error
+ * @cool: to control msg error
  * Return: no return
  */
-void print_syntax_error(data_shell *datash, char *input, int i, int bool)
+void erakan_syntax_ikos(data_shell *rndsh, char *injiza, int verb, int cool)
 {
-	char *msg, *msg2, *msg3, *error, *counter;
-	int length;
+	char *hp, *hp2, *hp3, *ikos, *counter;
+	int ubul;
 
-	if (input[i] == ';')
+	if (injiza[verb] == ';')
 	{
-		if (bool == 0)
-			msg = (input[i + 1] == ';' ? ";;" : ";");
+		if (cool == 0)
+			hp = (injiza[verb + 1] == ';' ? ";;" : ";");
 		else
-			msg = (input[i - 1] == ';' ? ";;" : ";");
+			hp = (injiza[verb - 1] == ';' ? ";;" : ";");
 	}
 
-	if (input[i] == '|')
-		msg = (input[i + 1] == '|' ? "||" : "|");
+	if (injiza[verb] == '|')
+		hp = (injiza[verb + 1] == '|' ? "||" : "|");
 
-	if (input[i] == '&')
-		msg = (input[i + 1] == '&' ? "&&" : "&");
+	if (injiza[verb] == '&')
+		hp = (injiza[verb + 1] == '&' ? "&&" : "&");
 
-	msg2 = ": Syntax error: \"";
-	msg3 = "\" unexpected\n";
-	counter = conv_num(datash->counter);
-	length = guru(datash->av[0]) + guru(counter);
-	length += guru(msg) + guru(msg2) + guru(msg3) + 2;
+	hp2 = ": Syntax error: \"";
+	hp3 = "\" unexpected\n";
+	counter = conv_num(rndsh->counter);
+	ubul = guru(rndsh->av[0]) + guru(counter);
+	ubul += guru(hp) + guru(hp2) + guru(hp3) + 2;
 
-	error = malloc(sizeof(char) * (length + 1));
-	if (error == 0)
+	ikos = malloc(sizeof(char) * (ubul + 1));
+	if (ikos == 0)
 	{
 		free(counter);
 		return;
 	}
-	_strcpy(error, datash->av[0]);
-	_strcat(error, ": ");
-	_strcat(error, counter);
-	_strcat(error, msg2);
-	_strcat(error, msg);
-	_strcat(error, msg3);
-	_strcat(error, "\0");
+	_strcpy(ikos, rndsh->av[0]);
+	_strcat(ikos, ": ");
+	_strcat(ikos, counter);
+	_strcat(ikos, hp2);
+	_strcat(ikos, hp);
+	_strcat(ikos, hp3);
+	_strcat(ikos, "\0");
 
-	write(STDERR_FILENO, error, length);
-	free(error);
+	write(STDERR_FILENO, ikos, ubul);
+	free(ikos);
 	free(counter);
 }
 
 /**
- * check_syntax_error - intermediate function to
+ * syntax_error_check - intermediate function to
  * find and print a syntax error
  *
- * @datash: data structure
- * @input: input string
+ * @rndsh: data structure
+ * @injiza: input string
  * Return: 1 if there is an error. 0 in other case
  */
-int check_syntax_error(data_shell *datash, char *input)
+int syntax_error_check(data_shell *rndsh, char *injiza)
 {
-	int begin = 0;
-	int f_char = 0;
-	int i = 0;
+	int tagil = 0;
+	int gy_char = 0;
+	int verb = 0;
 
-	f_char = first_char(input, &begin);
-	if (f_char == -1)
+	gy_char = econ_char(injiza, &tagil);
+	if (gy_char == -1)
 	{
-		print_syntax_error(datash, input, begin, 0);
+		erakan_syntax_ikos(rndsh, injiza, tagil, 0);
 		return (1);
 	}
 
-	i = error_sep_op(input + begin, 0, *(input + begin));
-	if (i != 0)
+	verb = snoop_error_og(injiza + tagil, 0, *(injiza + tagil));
+	if (verb != 0)
 	{
-		print_syntax_error(datash, input, begin + i, 1);
+		erakan_syntax_ikos(rndsh, injiza, tagil + verb, 1);
 		return (1);
 	}
 
