@@ -22,9 +22,9 @@ int get_feel_error2(data_shell *cowsh, int cat2)
 		forr = get_not_found_error(cowsh);
 		break;
 	case 2:
-		if (_strcmp("exit", cowsh->args[0]) == 0)
+		if (strcap_e("exit", cowsh->args[0]) == 0)
 			forr = get_exit_shell_error(cowsh);
-		else if (_strcmp("cd", cowsh->args[0]) == 0)
+		else if (strcap_e("cd", cowsh->args[0]) == 0)
 			forr = get_cd_error_message(cowsh);
 		break;
 	}

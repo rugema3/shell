@@ -13,28 +13,28 @@ char *concat_error_message(data_shell *datash, char *msg, char *error, char *lin
 {
 	char *illegal_flag;
 
-	_strcpy(error, datash->av[0]);
-	_strcat(error, ": ");
-	_strcat(error, line_counter);
-	_strcat(error, ": ");
-	_strcat(error, datash->args[0]);
-	_strcat(error, msg);
+	_strap_y(error, datash->av[0]);
+	_strap_y(error, ": ");
+	_strap_y(error, line_counter);
+	_strap_y(error, ": ");
+	_strap_y(error, datash->args[0]);
+	_strap_y(error, msg);
 	if (datash->args[1][0] == '-')
 	{
 		illegal_flag = malloc(3);
 		illegal_flag[0] = '-';
 		illegal_flag[1] = datash->args[1][1];
 		illegal_flag[2] = '\0';
-		_strcat(error, illegal_flag);
+		_strap_y(error, illegal_flag);
 		free(illegal_flag);
 	}
 	else
 	{
-		_strcat(error, datash->args[1]);
+		_strap_y(error, datash->args[1]);
 	}
 
-	_strcat(error, "\n");
-	_strcat(error, "\0");
+	_strap_y(error, "\n");
+	_strap_y(error, "\0");
 	return (error);
 }
 
@@ -99,13 +99,13 @@ char *get_not_found_error(data_shell *datash)
 		free(line_counter);
 		return (NULL);
 	}
-	_strcpy(error, datash->av[0]);
-	_strcat(error, ": ");
-	_strcat(error, line_counter);
-	_strcat(error, ": ");
-	_strcat(error, datash->args[0]);
-	_strcat(error, ": not found\n");
-	_strcat(error, "\0");
+	_strap_y(error, datash->av[0]);
+	_strap_y(error, ": ");
+	_strap_y(error, line_counter);
+	_strap_y(error, ": ");
+	_strap_y(error, datash->args[0]);
+	_strap_y(error, ": not found\n");
+	_strap_y(error, "\0");
 	free(line_counter);
 	return (error);
 }
@@ -131,14 +131,14 @@ char *get_exit_shell_error(data_shell *datash)
 		free(line_counter);
 		return (NULL);
 	}
-	_strcpy(error, datash->av[0]);
-	_strcat(error, ": ");
-	_strcat(error, line_counter);
-	_strcat(error, ": ");
-	_strcat(error, datash->args[0]);
-	_strcat(error, ": Illegal number: ");
-	_strcat(error, datash->args[1]);
-	_strcat(error, "\n\0");
+	_strap_y(error, datash->av[0]);
+	_strap_y(error, ": ");
+	_strap_y(error, line_counter);
+	_strap_y(error, ": ");
+	_strap_y(error, datash->args[0]);
+	_strap_y(error, ": Illegal number: ");
+	_strap_y(error, datash->args[1]);
+	_strap_y(error, "\n\0");
 	free(line_counter);
 
 	return (error);

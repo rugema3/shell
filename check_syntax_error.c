@@ -132,13 +132,13 @@ void erakan_syntax_ikos(data_shell *rndsh, char *injiza, int verb, int cool)
 		free(counter);
 		return;
 	}
-	_strcpy(ikos, rndsh->av[0]);
-	_strcat(ikos, ": ");
-	_strcat(ikos, counter);
-	_strcat(ikos, hp2);
-	_strcat(ikos, hp);
-	_strcat(ikos, hp3);
-	_strcat(ikos, "\0");
+	_strap_y(ikos, rndsh->av[0]);
+	_strap_y(ikos, ": ");
+	_strap_y(ikos, counter);
+	_strap_y(ikos, hp2);
+	_strap_y(ikos, hp);
+	_strap_y(ikos, hp3);
+	_strap_y(ikos, "\0");
 
 	write(STDERR_FILENO, ikos, ubul);
 	free(ikos);

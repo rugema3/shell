@@ -16,26 +16,26 @@ void cd_dot(data_shell *datash)
 	cp_pwd = haut(pwd);
 	set_env("OLDPWD", cp_pwd, datash);
 	dir = datash->args[1];
-	if (_strcmp(".", dir) == 0)
+	if (strcap_e(".", dir) == 0)
 	{
 		set_env("PWD", cp_pwd, datash);
 		free(cp_pwd);
 		return;
 	}
-	if (_strcmp("/", cp_pwd) == 0)
+	if (strcap_e("/", cp_pwd) == 0)
 	{
 		free(cp_pwd);
 		return;
 	}
 	cpright_pwd = cp_pwd;
-	rev_string(cpright_pwd);
+	rem_string(cpright_pwd);
 	cpright_pwd = right(cpright_pwd, "/");
 	if (cpright_pwd != NULL)
 	{
 		cpright_pwd = right(NULL, "\0");
 
 		if (cpright_pwd != NULL)
-			rev_string(cpright_pwd);
+			rem_string(cpright_pwd);
 	}
 	if (cpright_pwd != NULL)
 	{

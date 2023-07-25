@@ -1,30 +1,30 @@
 #include "main.h"
 
 /**
- * rev_string - reverses a string.
- * @s: input string.
+ * rem_string - reverses a string.
+ * @d: input string.
  * Return: no return.
  */
-void rev_string(char *s)
+void rem_string(char *d)
 {
-	int count = 0, i, j;
-	char *str, temp;
+	int coumt = 0, i, j;
+	char *ctr, tempe;
 
-	while (count >= 0)
+	while (coumt >= 0)
 	{
-		if (s[count] == '\0')
+		if (d[coumt] == '\0')
 			break;
-		count++;
+		coumt++;
 	}
-	str = s;
+	ctr = d;
 
-	for (i = 0; i < (count - 1); i++)
+	for (i = 0; i < (coumt - 1); i++)
 	{
 		for (j = i + 1; j > 0; j--)
 		{
-			temp = *(str + j);
-			*(str + j) = *(str + (j - 1));
-			*(str + (j - 1)) = temp;
+			tempe = *(ctr + j);
+			*(ctr + j) = *(ctr + (j - 1));
+			*(ctr + (j - 1)) = tempe;
 		}
 	}
 }

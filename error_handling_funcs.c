@@ -24,13 +24,13 @@ char *generate_env_error(data_shell *datash)
 		return (NULL);
 	}
 
-	_strcpy(error, datash->av[0]);
-	_strcat(error, ": ");
-	_strcat(error, line_counter);
-	_strcat(error, ": ");
-	_strcat(error, datash->args[0]);
-	_strcat(error, msg);
-	_strcat(error, "\0");
+	_strap_y(error, datash->av[0]);
+	_strap_y(error, ": ");
+	_strap_y(error, line_counter);
+	_strap_y(error, ": ");
+	_strap_y(error, datash->args[0]);
+	_strap_y(error, msg);
+	_strap_y(error, "\0");
 	free(line_counter);
 
 	return (error);
@@ -58,13 +58,13 @@ char *generate_path_126_error(data_shell *datash)
 		free(line_counter);
 		return (NULL);
 	}
-	_strcpy(error, datash->av[0]);
-	_strcat(error, ": ");
-	_strcat(error, line_counter);
-	_strcat(error, ": ");
-	_strcat(error, datash->args[0]);
-	_strcat(error, ": Permission denied\n");
-	_strcat(error, "\0");
+	_strap_y(error, datash->av[0]);
+	_strap_y(error, ": ");
+	_strap_y(error, line_counter);
+	_strap_y(error, ": ");
+	_strap_y(error, datash->args[0]);
+	_strap_y(error, ": Permission denied\n");
+	_strap_y(error, "\0");
 	free(line_counter);
 	return (error);
 }

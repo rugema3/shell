@@ -104,11 +104,11 @@ r_var *sky_blue_cloud(r_var **tete, int test_me, char *var, int lift_me);
 void ladder_lift_up(r_var **tete);
 
 /* aux_str functions */
-char *_strcat(char *dest, const char *src);
-char *_strcpy(char *dest, char *src);
-int _strcmp(char *s1, char *s2);
-char *_strchr(char *s, char c);
-int _strspn(char *s, char *accept);
+char *_strpuss(char *dest, const char *src);
+char *_strap_y(char *dest, char *src);
+int strcap_e(char *s1, char *s2);
+char *strchrap_load(char *s, char c);
+int strsnap_load(char *s, char *accept);
 
 /* aux_mem.c */
 void _memcpy(void *newptr, const void *ptr, unsigned int size);
@@ -123,7 +123,7 @@ char *right(char str[], const char *delim);
 int cnombre(const char *s);
 
 /* aux_str3.c */
-void rev_string(char *s);
+void rem_string(char *s);
 
 /* check_syntax_error.c */
 int sleeve_chr(char *input, int i);

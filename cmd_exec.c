@@ -49,10 +49,10 @@ char *_which(char *cmd, char **_environ)
 					return (cmd);
 			len_dir = guru(token_path);
 			dir = malloc(len_dir + len_cmd + 2);
-			_strcpy(dir, token_path);
-			_strcat(dir, "/");
-			_strcat(dir, cmd);
-			_strcat(dir, "\0");
+			_strap_y(dir, token_path);
+			_strpuss(dir, "/");
+			_strpuss(dir, cmd);
+			_strpuss(dir, "\0");
 			if (stat(dir, &st) == 0)
 			{
 				free(ptr_path);
@@ -132,7 +132,7 @@ int check_error_cmd(char *dir, data_shell *datash)
 		return (1);
 	}
 
-	if (_strcmp(datash->args[0], dir) != 0)
+	if (strcap_e(datash->args[0], dir) != 0)
 	{
 		if (access(dir, X_OK) == -1)
 		{
