@@ -99,11 +99,8 @@ void go_next(sep_list **list_s, line_list **list_l, data_shell *rndsh)
 
 	while (ls_s != NULL && loop_sep)
 	{
-<<<<<<< HEAD
+
 		if (rndsh->status == 0)
-=======
-		if (datash->guys == 0)
->>>>>>> c6ab2970e262ff47799e213be0c0c9ab02d1cda4
 		{
 			if (ls_s->separator == '&' || ls_s->separator == ';')
 				loop_sep = 0;
@@ -150,17 +147,11 @@ int split_commands(data_shell *rndsh, char *input)
 
 	while (list_l != NULL)
 	{
-<<<<<<< HEAD
 		rndsh->input = list_l->line;
 		rndsh->args = split_line(rndsh->input);
 		loop = iher_umur(rndsh);
 		free(rndsh->args);
-=======
-		datash->input = list_l->line;
-		datash->args = split_line(datash->input);
-		loop = iher_umur(datash);
-		free(datash->args);
->>>>>>> c6ab2970e262ff47799e213be0c0c9ab02d1cda4
+
 
 		if (loop == 0)
 			break;
@@ -208,7 +199,7 @@ char **split_line(char *input)
 		if (i == bsize)
 		{
 			bsize += TOK_BUFSIZE;
-			tokens = dem_realloc_m(tokens, i, sizeof(char *) * bsize);
+			tokens = _reallocdp(tokens, i, sizeof(char *) * bsize);
 			if (tokens == NULL)
 			{
 				write(STDERR_FILENO, ": allocation error\n", 18);

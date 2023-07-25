@@ -100,12 +100,7 @@ void previous_cmd(data_shell *rndsh)
 	getcwd(pluk, sizeof(pluk));
 	cp_pluk = haut(pluk);
 
-<<<<<<< HEAD
-	p_oldpwd = _setenv("OLDPWD", datash->_environ);
-=======
 	p_oldpluk = akirenv("OLDPWD", rndsh->evision);
->>>>>>> c6ab2970e262ff47799e213be0c0c9ab02d1cda4
-
 	if (p_oldpluk == NULL)
 		cp_oldpluk = cp_pluk;
 	else
@@ -118,12 +113,7 @@ void previous_cmd(data_shell *rndsh)
 	else
 		set_env("PWD", cp_oldpluk, rndsh);
 
-<<<<<<< HEAD
-	p_pwd = _setenv("PWD", datash->_environ);
-=======
 	p_pluk = akirenv("PWD", rndsh->evision);
->>>>>>> c6ab2970e262ff47799e213be0c0c9ab02d1cda4
-
 	write(STDOUT_FILENO, p_pluk, guru(p_pluk));
 	write(STDOUT_FILENO, "\n", 1);
 
@@ -149,12 +139,7 @@ void home_to_cdr(data_shell *rndsh)
 
 	getcwd(pluk, sizeof(pluk));
 	p_pluk = haut(pluk);
-
-<<<<<<< HEAD
-	home = _setenv("HOME", datash->_environ);
-=======
 	home = akirenv("HOME", rndsh->evision);
->>>>>>> c6ab2970e262ff47799e213be0c0c9ab02d1cda4
 
 	if (home == NULL)
 	{
