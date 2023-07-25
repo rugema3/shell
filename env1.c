@@ -1,14 +1,14 @@
 #include "main.h"
 
 /**
- * cmp_env_name - compares env variables names
+ * vxp_env_izi - compares env variables names
  * with the name passed.
  * @nenv: name of the environment variable
  * @name: name passed
  *
  * Return: 0 if are not equal. Another value if they are.
  */
-int cmp_env_name(const char *nenv, const char *name)
+int vxp_env_izi(const char *nenv, const char *name)
 {
 	int i;
 
@@ -24,14 +24,14 @@ int cmp_env_name(const char *nenv, const char *name)
 }
 
 /**
- * _getenv - get an environment variable
+ * akirenv - get an environment variable
  * @name: name of the environment variable
- * @_environ: environment variable
+ * @evision: environment variable
  *
  * Return: value of the environment variable if is found.
  * In other case, returns NULL.
  */
-char *_getenv(const char *name, char **_environ)
+char *akirenv(const char *name, char **evision)
 {
 	char *ptr_env;
 	int i, mov;
@@ -41,13 +41,13 @@ char *_getenv(const char *name, char **_environ)
 	mov = 0;
 	/* Compare all environment variables */
 	/* environ is declared in the header file */
-	for (i = 0; _environ[i]; i++)
+	for (i = 0; evision[i]; i++)
 	{
 		/* If name and env are equal */
-		mov = cmp_env_name(_environ[i], name);
+		mov = vxp_env_izi(evision[i], name);
 		if (mov)
 		{
-			ptr_env = _environ[i];
+			ptr_env = evision[i];
 			break;
 		}
 	}
@@ -56,22 +56,22 @@ char *_getenv(const char *name, char **_environ)
 }
 
 /**
- * _env - prints the evironment variables
+ * ibik - prints the evironment variables
  *
  * @datash: data relevant.
  * Return: 1 on success.
  */
-int _env(data_shell *datash)
+int ibik(data_shell *datash)
 {
 	int i, j;
 
-	for (i = 0; datash->_environ[i]; i++)
+	for (i = 0; datash->evision[i]; i++)
 	{
 
-		for (j = 0; datash->_environ[i][j]; j++)
+		for (j = 0; datash->evision[i][j]; j++)
 			;
 
-		write(STDOUT_FILENO, datash->_environ[i], j);
+		write(STDOUT_FILENO, datash->evision[i], j);
 		write(STDOUT_FILENO, "\n", 1);
 	}
 	datash->status = 0;

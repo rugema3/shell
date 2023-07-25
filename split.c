@@ -148,7 +148,7 @@ int split_commands(data_shell *datash, char *input)
 	{
 		datash->input = list_l->line;
 		datash->args = split_line(datash->input);
-		loop = exec_line(datash);
+		loop = iher_umur(datash);
 		free(datash->args);
 
 		if (loop == 0)

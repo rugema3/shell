@@ -13,7 +13,7 @@ void check_env(r_var **h, char *in, data_shell *data)
 	int row, chr, j, lval;
 	char **_envr;
 
-	_envr = data->_environ;
+	_envr = data->evision;
 	for (row = 0; _envr[row]; row++)
 	{
 		for (j = 1, chr = 0; _envr[row][chr]; chr++)

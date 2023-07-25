@@ -10,12 +10,12 @@ void free_data(data_shell *datash)
 {
 	unsigned int i;
 
-	for (i = 0; datash->_environ[i]; i++)
+	for (i = 0; datash->evision[i]; i++)
 	{
-		free(datash->_environ[i]);
+		free(datash->evision[i]);
 	}
 
-	free(datash->_environ);
+	free(datash->evision);
 	free(datash->pid);
 }
 
@@ -39,14 +39,14 @@ void set_data(data_shell *datash, char **av)
 	for (i = 0; environ[i]; i++)
 		;
 
-	datash->_environ = malloc(sizeof(char *) * (i + 1));
+	datash->evision = malloc(sizeof(char *) * (i + 1));
 
 	for (i = 0; environ[i]; i++)
 	{
-		datash->_environ[i] = haut(environ[i]);
+		datash->evision[i] = haut(environ[i]);
 	}
 
-	datash->_environ[i] = NULL;
+	datash->evision[i] = NULL;
 	datash->pid = conv_num(getpid());
 }
 
