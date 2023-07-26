@@ -6,7 +6,7 @@
  * @rndsh: data structure
  * Return: no return
  */
-void got_data(data_shell *rndsh)
+void got_data(datacliff *rndsh)
 {
 	unsigned int i;
 
@@ -16,7 +16,7 @@ void got_data(data_shell *rndsh)
 	}
 
 	free(rndsh->evision);
-	free(rndsh->pid);
+	free(rndsh->id_pid);
 }
 
 /**
@@ -26,15 +26,15 @@ void got_data(data_shell *rndsh)
  * @evr: argument vector
  * Return: no return
  */
-void ubaka_data(data_shell *rndsh, char **evr)
+void ubaka_data(datacliff *rndsh, char **evr)
 {
 	unsigned int i;
 
 	rndsh->evr = evr;
-	rndsh->input = NULL;
-	rndsh->args = NULL;
+	rndsh->mettre = NULL;
+	rndsh->kwargs = NULL;
 	rndsh->guys = 0;
-	rndsh->counter = 1;
+	rndsh->compteur = 1;
 
 	for (i = 0; environ[i]; i++)
 		;
@@ -47,7 +47,7 @@ void ubaka_data(data_shell *rndsh, char **evr)
 	}
 
 	rndsh->evision[i] = NULL;
-	rndsh->pid = conv_num(getpid());
+	rndsh->id_pid = conv_num(getpid());
 }
 
 /**
@@ -60,7 +60,7 @@ void ubaka_data(data_shell *rndsh, char **evr)
  */
 int main(int ax, char **evr)
 {
-	data_shell rndsh;
+	datacliff rndsh;
 	(void) ax;
 
 	signal(SIGINT, get_sigint);

@@ -61,7 +61,7 @@ char *akirenv(const char *name, char **evision)
  * @datash: data relevant.
  * Return: 1 on success.
  */
-int ibik(data_shell *datash)
+int ibik(datacliff *datash)
 {
 	int i, j;
 

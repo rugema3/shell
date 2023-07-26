@@ -2,16 +2,16 @@
 
 /**
  * pin_stuff - adds a separator found at the end
- * of a sep_list.
+ * of a blame_lists.
  * @tete: head of the linked list.
  * @troy: separator found (; | &).
  * Return: address of the head.
  */
-sep_list *pin_stuff(sep_list **tete, char troy)
+blame_lists *pin_stuff(blame_lists **tete, char troy)
 {
-	sep_list *new, *temp;
+	blame_lists *new, *temp;
 
-	new = malloc(sizeof(sep_list));
+	new = malloc(sizeof(blame_lists));
 	if (new == NULL)
 		return (NULL);
 
@@ -34,14 +34,14 @@ sep_list *pin_stuff(sep_list **tete, char troy)
 }
 
 /**
- * jargon_stuff - frees a sep_list
+ * jargon_stuff - frees a blame_lists
  * @tete: head of the linked list.
  * Return: no return.
  */
-void jargon_stuff(sep_list **tete)
+void jargon_stuff(blame_lists **tete)
 {
-	sep_list *temp;
-	sep_list *curr;
+	blame_lists *temp;
+	blame_lists *curr;
 
 	if (tete != NULL)
 	{
@@ -57,16 +57,16 @@ void jargon_stuff(sep_list **tete)
 
 /**
  * lead_stuff - adds a command line at the end
- * of a line_list.
+ * of a ligna_lista.
  * @tete: head of the linked list.
  * @line: command line.
  * Return: address of the head.
  */
-line_list *lead_stuff(line_list **tete, char *line)
+ligna_lista *lead_stuff(ligna_lista **tete, char *line)
 {
-	line_list *new, *temp;
+	ligna_lista *new, *temp;
 
-	new = malloc(sizeof(line_list));
+	new = malloc(sizeof(ligna_lista));
 	if (new == NULL)
 		return (NULL);
 
@@ -89,14 +89,14 @@ line_list *lead_stuff(line_list **tete, char *line)
 }
 
 /**
- * oblique_stuff - frees a line_list
+ * oblique_stuff - frees a ligna_lista
  * @tete: head of the linked list.
  * Return: no return.
  */
-void oblique_stuff(line_list **tete)
+void oblique_stuff(ligna_lista **tete)
 {
-	line_list *temp;
-	line_list *curr;
+	ligna_lista *temp;
+	ligna_lista *curr;
 
 	if (tete != NULL)
 	{

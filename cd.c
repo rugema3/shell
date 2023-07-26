@@ -7,7 +7,7 @@
  *
  * Return: no return
  */
-void _dot(data_shell *rndsh)
+void _dot(datacliff *rndsh)
 {
 	char pluk[PATH_MAX];
 	char *dir, *cp_pluk, *cpright_pluk;
@@ -15,7 +15,7 @@ void _dot(data_shell *rndsh)
 	getcwd(pluk, sizeof(pluk));
 	cp_pluk = haut(pluk);
 	set_env("OLDPWD", cp_pluk, rndsh);
-	dir = rndsh->args[1];
+	dir = rndsh->kwargs[1];
 	if (strcap_e(".", dir) == 0)
 	{
 		set_env("PWD", cp_pluk, rndsh);
@@ -58,14 +58,14 @@ void _dot(data_shell *rndsh)
  * @rndsh: data relevant (directories)
  * Return: no return
  */
-void dot_cmd(data_shell *rndsh)
+void dot_cmd(datacliff *rndsh)
 {
 	char pluk[PATH_MAX];
 	char *dir, *cp_pluk, *cp_dir;
 
 	getcwd(pluk, sizeof(pluk));
 
-	dir = rndsh->args[1];
+	dir = rndsh->kwargs[1];
 	if (chdir(dir) == -1)
 	{
 		get_feel_error2(rndsh, 2);
@@ -92,7 +92,7 @@ void dot_cmd(data_shell *rndsh)
  * @rndsh: data relevant (environ)
  * Return: no return
  */
-void previous_cmd(data_shell *rndsh)
+void previous_cmd(datacliff *rndsh)
 {
 	char pluk[PATH_MAX];
 	char *p_pluk, *p_oldpluk, *cp_pluk, *cp_oldpluk;
@@ -132,7 +132,7 @@ void previous_cmd(data_shell *rndsh)
  * @rndsh: data relevant (environ)
  * Return: no return
  */
-void home_to_cdr(data_shell *rndsh)
+void home_to_cdr(datacliff *rndsh)
 {
 	char *p_pluk, *home;
 	char pluk[PATH_MAX];

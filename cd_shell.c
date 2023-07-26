@@ -6,12 +6,12 @@
  * @cowsh: data relevant
  * Return: 1 on success
  */
-int rnd_catch(data_shell *cowsh)
+int rnd_catch(datacliff *cowsh)
 {
 	char *tir;
 	int given, fill, spoon;
 
-	tir = cowsh->args[1];
+	tir = cowsh->kwargs[1];
 
 	if (tir != NULL)
 	{

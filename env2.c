@@ -33,7 +33,7 @@ char *copy_info(char *name, char *value)
  * @datash: data structure (environ)
  * Return: no return
  */
-void set_env(char *name, char *value, data_shell *datash)
+void set_env(char *name, char *value, datacliff *datash)
 {
 	int i;
 	char *var_env, *name_env;
@@ -64,16 +64,16 @@ void set_env(char *name, char *value, data_shell *datash)
  *
  * Return: 1 on success.
  */
-int _setenv(data_shell *datash)
+int _setenv(datacliff *datash)
 {
 
-	if (datash->args[1] == NULL || datash->args[2] == NULL)
+	if (datash->kwargs[1] == NULL || datash->kwargs[2] == NULL)
 	{
 		get_feel_error2(datash, -1);
 		return (1);
 	}
 
-	set_env(datash->args[1], datash->args[2], datash);
+	set_env(datash->kwargs[1], datash->kwargs[2], datash);
 
 	return (1);
 }
@@ -85,13 +85,13 @@ int _setenv(data_shell *datash)
  *
  * Return: 1 on success.
  */
-int _unsetenv(data_shell *datash)
+int _unsetenv(datacliff *datash)
 {
 	char **reallocevision;
 	char *var_env, *name_env;
 	int i, j, k;
 
-	if (datash->args[1] == NULL)
+	if (datash->kwargs[1] == NULL)
 	{
 		get_feel_error2(datash, -1);
 		return (1);
@@ -101,7 +101,7 @@ int _unsetenv(data_shell *datash)
 	{
 		var_env = haut(datash->evision[i]);
 		name_env = right(var_env, "=");
-		if (strcap_e(name_env, datash->args[1]) == 0)
+		if (strcap_e(name_env, datash->kwargs[1]) == 0)
 		{
 			k = i;
 		}

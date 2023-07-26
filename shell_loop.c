@@ -41,7 +41,7 @@ char *without_comment(char *in)
  *
  * Return: no return.
  */
-void shell_loop(data_shell *datash)
+void shell_loop(datacliff *datash)
 {
 	int loop, i_eof;
 	char *input;
@@ -65,7 +65,7 @@ void shell_loop(data_shell *datash)
 			}
 			input = indur_var(input, datash);
 			loop = split_commands(datash, input);
-			datash->counter += 1;
+			datash->compteur += 1;
 			free(input);
 		}
 		else

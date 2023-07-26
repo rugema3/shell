@@ -6,14 +6,14 @@
  * @rndsh: data relevant (args)
  * Return: 1 on success.
  */
-int iher_umur(data_shell *rndsh)
+int iher_umur(datacliff *rndsh)
 {
-	int (*ubakib)(data_shell *rndsh);
+	int (*ubakib)(datacliff *rndsh);
 
-	if (rndsh->args[0] == NULL)
+	if (rndsh->kwargs[0] == NULL)
 		return (1);
 
-	ubakib = get_builtin(rndsh->args[0]);
+	ubakib = get_builtin(rndsh->kwargs[0]);
 
 	if (ubakib != NULL)
 		return (ubakib(rndsh));

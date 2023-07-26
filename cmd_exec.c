@@ -78,13 +78,13 @@ char *_which(char *cmd, char **evision)
  * @datash: data structure
  * Return: 0 if is not an executable, other number if it does
  */
-int is_executable(data_shell *datash)
+int is_executable(datacliff *datash)
 {
 	struct stat st;
 	int i;
 	char *input;
 
-	input = datash->args[0];
+	input = datash->kwargs[0];
 	for (i = 0; input[i]; i++)
 	{
 		if (input[i] == '.')
@@ -124,7 +124,7 @@ int is_executable(data_shell *datash)
  * @datash: data structure
  * Return: 1 if there is an error, 0 if not
  */
-int check_error_cmd(char *dir, data_shell *datash)
+int check_error_cmd(char *dir, datacliff *datash)
 {
 	if (dir == NULL)
 	{
@@ -132,7 +132,7 @@ int check_error_cmd(char *dir, data_shell *datash)
 		return (1);
 	}
 
-	if (strcap_e(datash->args[0], dir) != 0)
+	if (strcap_e(datash->kwargs[0], dir) != 0)
 	{
 		if (access(dir, X_OK) == -1)
 		{
@@ -144,7 +144,7 @@ int check_error_cmd(char *dir, data_shell *datash)
 	}
 	else
 	{
-		if (access(datash->args[0], X_OK) == -1)
+		if (access(datash->kwargs[0], X_OK) == -1)
 		{
 			get_feel_error2(datash, 126);
 			return (1);
@@ -160,7 +160,7 @@ int check_error_cmd(char *dir, data_shell *datash)
  * @datash: data relevant (args and input)
  * Return: 1 on success.
  */
-int cmd_exec(data_shell *datash)
+int cmd_exec(datacliff *datash)
 {
 	pid_t pd;
 	pid_t wpd;
@@ -174,7 +174,7 @@ int cmd_exec(data_shell *datash)
 		return (1);
 	if (exec == 0)
 	{
-		dir = _which(datash->args[0], datash->evision);
+		dir = _which(datash->kwargs[0], datash->evision);
 		if (check_error_cmd(dir, datash) == 1)
 			return (1);
 	}
@@ -183,10 +183,10 @@ int cmd_exec(data_shell *datash)
 	if (pd == 0)
 	{
 		if (exec == 0)
-			dir = _which(datash->args[0], datash->evision);
+			dir = _which(datash->kwargs[0], datash->evision);
 		else
-			dir = datash->args[0];
-		execve(dir + exec, datash->args, datash->evision);
+			dir = datash->kwargs[0];
+		execve(dir + exec, datash->kwargs, datash->evision);
 	}
 	else if (pd < 0)
 	{

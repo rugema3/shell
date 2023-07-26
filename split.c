@@ -1,32 +1,33 @@
 #include "main.h"
+#include "bigstructures.h"
 
 /**
  * swap_char - swaps | and & for non-printed chars
  *
- * @input: input string
+ * @mettre: input string
  * @bool: type of swap
  * Return: swapped string
  */
-char *swap_char(char *input, int bool)
+char *swap_char(char *mettre, int bool)
 {
 	int i;
 
 	if (bool == 0)
 	{
-		for (i = 0; input[i]; i++)
+		for (i = 0; mettre[i]; i++)
 		{
-			if (input[i] == '|')
+			if (mettre[i] == '|')
 			{
-				if (input[i + 1] != '|')
-					input[i] = 16;
+				if (mettre[i + 1] != '|')
+					mettre[i] = 16;
 				else
 					i++;
 			}
 
-			if (input[i] == '&')
+			if (mettre[i] == '&')
 			{
-				if (input[i + 1] != '&')
-					input[i] = 12;
+				if (mettre[i + 1] != '&')
+					mettre[i] = 12;
 				else
 					i++;
 			}
@@ -34,13 +35,13 @@ char *swap_char(char *input, int bool)
 	}
 	else
 	{
-		for (i = 0; input[i]; i++)
+		for (i = 0; mettre[i]; i++)
 		{
-			input[i] = (input[i] == 16 ? '|' : input[i]);
-			input[i] = (input[i] == 12 ? '&' : input[i]);
+			mettre[i] = (mettre[i] == 16 ? '|' : mettre[i]);
+			mettre[i] = (mettre[i] == 12 ? '&' : mettre[i]);
 		}
 	}
-	return (input);
+	return (mettre);
 }
 
 /**
@@ -48,29 +49,29 @@ char *swap_char(char *input, int bool)
  *
  * @head_s: head of separator list
  * @head_l: head of command lines list
- * @input: input string
+ * @mettre: input string
  * Return: no return
  */
-void add_nodes(sep_list **head_s, line_list **head_l, char *input)
+void add_nodes(blame_lists **head_s, ligna_lista **head_l, char *mettre)
 {
 	int i;
 	char *line;
 
-	input = swap_char(input, 0);
+	mettre = swap_char(mettre, 0);
 
-	for (i = 0; input[i]; i++)
+	for (i = 0; mettre[i]; i++)
 	{
-		if (input[i] == ';')
-			pin_stuff(head_s, input[i]);
+		if (mettre[i] == ';')
+			pin_stuff(head_s, mettre[i]);
 
-		if (input[i] == '|' || input[i] == '&')
+		if (mettre[i] == '|' || mettre[i] == '&')
 		{
-			pin_stuff(head_s, input[i]);
+			pin_stuff(head_s, mettre[i]);
 			i++;
 		}
 	}
 
-	line = right(input, ";|&");
+	line = right(mettre, ";|&");
 	do {
 		line = swap_char(line, 1);
 		lead_stuff(head_l, line);
@@ -87,11 +88,11 @@ void add_nodes(sep_list **head_s, line_list **head_l, char *input)
  * @rndsh: data structure
  * Return: no return
  */
-void go_next(sep_list **list_s, line_list **list_l, data_shell *rndsh)
+void go_next(blame_lists **list_s, ligna_lista **list_l, datacliff *rndsh)
 {
 	int loop_sep;
-	sep_list *ls_s;
-	line_list *ls_l;
+	blame_lists *ls_s;
+	ligna_lista *ls_l;
 
 	loop_sep = 1;
 	ls_s = *list_s;
@@ -127,30 +128,30 @@ void go_next(sep_list **list_s, line_list **list_l, data_shell *rndsh)
  * the separators ;, | and &, and executes them
  *
  * @rndsh: data structure
- * @input: input string
+ * @mettre: input string
  * Return: 0 to exit, 1 to continue
  */
-int split_commands(data_shell *rndsh, char *input)
+int split_commands(datacliff *rndsh, char *mettre)
 {
 
-	sep_list *head_s, *list_s;
-	line_list *head_l, *list_l;
+	blame_lists *head_s, *list_s;
+	ligna_lista *head_l, *list_l;
 	int loop;
 
 	head_s = NULL;
 	head_l = NULL;
 
-	add_nodes(&head_s, &head_l, input);
+	add_nodes(&head_s, &head_l, mettre);
 
 	list_s = head_s;
 	list_l = head_l;
 
 	while (list_l != NULL)
 	{
-		rndsh->input = list_l->line;
-		rndsh->args = split_line(rndsh->input);
+		rndsh->mettre = list_l->line;
+		rndsh->kwargs = split_line(rndsh->mettre);
 		loop = iher_umur(rndsh);
-		free(rndsh->args);
+		free(rndsh->kwargs);
 
 
 		if (loop == 0)
@@ -173,10 +174,10 @@ int split_commands(data_shell *rndsh, char *input)
 /**
  * split_line - tokenizes the input string
  *
- * @input: input string.
+ * @mettre: input string.
  * Return: string splitted.
  */
-char **split_line(char *input)
+char **split_line(char *mettre)
 {
 	size_t bsize;
 	size_t i;
@@ -191,7 +192,7 @@ char **split_line(char *input)
 		exit(EXIT_FAILURE);
 	}
 
-	token = right(input, TOK_DELIM);
+	token = right(mettre, TOK_DELIM);
 	tokens[0] = token;
 
 	for (i = 1; token != NULL; i++)

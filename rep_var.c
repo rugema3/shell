@@ -8,7 +8,7 @@
  * @rat: data structure
  * Return: no return
  */
-void suzum_env(r_var **d, char *ips, data_shell *rat)
+void suzum_env(r_var **d, char *ips, datacliff *rat)
 {
 	int umurongo, xhr, j, uburo;
 	char **_envr;
@@ -50,12 +50,12 @@ void suzum_env(r_var **d, char *ips, data_shell *rat)
  * @rat: data structure
  * Return: no return
  */
-int suzum_vars(r_var **d, char *ips, char *foot, data_shell *rat)
+int suzum_vars(r_var **d, char *ips, char *foot, datacliff *rat)
 {
 	int i, sxt, lpd;
 
 	sxt = guru(foot);
-	lpd = guru(rat->pid);
+	lpd = guru(rat->id_pid);
 
 	for (i = 0; ips[i]; i++)
 	{
@@ -64,7 +64,7 @@ int suzum_vars(r_var **d, char *ips, char *foot, data_shell *rat)
 			if (ips[i + 1] == '?')
 				sky_blue_cloud(d, 2, foot, sxt), i++;
 			else if (ips[i + 1] == '$')
-				sky_blue_cloud(d, 2, rat->pid, lpd), i++;
+				sky_blue_cloud(d, 2, rat->id_pid, lpd), i++;
 			else if (ips[i + 1] == '\n')
 				sky_blue_cloud(d, 0, NULL, 0);
 			else if (ips[i + 1] == '\0')
@@ -142,7 +142,7 @@ char *hindur_input(r_var **hejur, char *zxput, char *new_zxput, int rlen)
  * @rndsh: data structure
  * Return: replaced string
  */
-char *indur_var(char *zxput, data_shell *rndsh)
+char *indur_var(char *zxput, datacliff *rndsh)
 {
 	r_var *hejur, *inht;
 	char *guys, *new_zxput;

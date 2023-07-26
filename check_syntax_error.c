@@ -101,9 +101,9 @@ int econ_char(char *injiza, int *verb)
  * @cool: to control msg error
  * Return: no return
  */
-void erakan_syntax_ikos(data_shell *rndsh, char *injiza, int verb, int cool)
+void erakan_syntax_ikos(datacliff *rndsh, char *injiza, int verb, int cool)
 {
-	char *hp, *hp2, *hp3, *ikos, *counter;
+	char *hp, *hp2, *hp3, *ikos, *compteur;
 	int ubul;
 
 	if (injiza[verb] == ';')
@@ -122,19 +122,19 @@ void erakan_syntax_ikos(data_shell *rndsh, char *injiza, int verb, int cool)
 
 	hp2 = ": Syntax error: \"";
 	hp3 = "\" unexpected\n";
-	counter = conv_num(rndsh->counter);
-	ubul = guru(rndsh->evr[0]) + guru(counter);
+	compteur = conv_num(rndsh->compteur);
+	ubul = guru(rndsh->evr[0]) + guru(compteur);
 	ubul += guru(hp) + guru(hp2) + guru(hp3) + 2;
 
 	ikos = malloc(sizeof(char) * (ubul + 1));
 	if (ikos == 0)
 	{
-		free(counter);
+		free(compteur);
 		return;
 	}
 	_strap_y(ikos, rndsh->evr[0]);
 	_strap_y(ikos, ": ");
-	_strap_y(ikos, counter);
+	_strap_y(ikos, compteur);
 	_strap_y(ikos, hp2);
 	_strap_y(ikos, hp);
 	_strap_y(ikos, hp3);
@@ -142,7 +142,7 @@ void erakan_syntax_ikos(data_shell *rndsh, char *injiza, int verb, int cool)
 
 	write(STDERR_FILENO, ikos, ubul);
 	free(ikos);
-	free(counter);
+	free(compteur);
 }
 
 /**
@@ -153,7 +153,7 @@ void erakan_syntax_ikos(data_shell *rndsh, char *injiza, int verb, int cool)
  * @injiza: input string
  * Return: 1 if there is an error. 0 in other case
  */
-int syntax_error_check(data_shell *rndsh, char *injiza)
+int syntax_error_check(datacliff *rndsh, char *injiza)
 {
 	int tagil = 0;
 	int gy_char = 0;
