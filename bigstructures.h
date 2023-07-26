@@ -24,52 +24,52 @@ typedef struct data_cliff
 
 /**
  * struct blame_lists_q - single linked list
- * @separator: ; | &
- * @next: next node
+ * @separateur: ; | &
+ * @suivant: next node
  * Description: single linked list to store separators
  */
 typedef struct blame_lists_q
 {
-    char separator;
-    struct blame_lists_q *next;
+    char separateur;
+    struct blame_lists_q *suivant;
 } blame_lists;
 
 /**
  * struct ligna_lista_s - single linked list
- * @line: command line
- * @next: next node
+ * @ligna: command line
+ * @suivant: next node
  * Description: single linked list to store command lines
  */
 typedef struct ligna_lista_s
 {
-    char *line;
-    struct ligna_lista_s *next;
+    char *ligna;
+    struct ligna_lista_s *suivant;
 } ligna_lista;
 
 /**
  * struct qr_var_liste - single linked list
- * @len_var: length of the variable
- * @val: value of the variable
- * @len_val: length of the value
- * @next: next node
+ * @blop_var: length of the variable
+ * @blopval: value of the variable
+ * @blop_val: length of the value
+ * @suivant: next node
  * Description: single linked list to store variables
  */
 typedef struct qr_var_liste
 {
-    int len_var;
-    char *val;
-    int len_val;
-    struct qr_var_liste *next;
+    int blop_var;
+    char *blopval;
+    int blop_val;
+    struct qr_var_liste *suivant;
 } qr_var;
 
 /**
  * struct bare_built - Builtin struct for command args.
- * @name: The name of the command builtin i.e cd, exit, env
+ * @nom: The name of the command builtin i.e cd, exit, env
  * @f: data type pointer function.
  */
 typedef struct bare_built
 {
-    char *name;
+    char *nom;
     int (*f)(datacliff *rndsh);
 } bare_b;
 

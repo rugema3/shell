@@ -5,11 +5,11 @@
  * of a qr_var list.
  * @tete: head of the linked list.
  * @test_me: length of the variable.
- * @val: value of the variable.
+ * @blopval: value of the variable.
  * @lift_me: length of the value.
  * Return: address of the head.
  */
-qr_var *sky_blue_cloud(qr_var **tete, int test_me, char *val, int lift_me)
+qr_var *sky_blue_cloud(qr_var **tete, int test_me, char *blopval, int lift_me)
 {
 	qr_var *new, *temp;
 
@@ -17,11 +17,11 @@ qr_var *sky_blue_cloud(qr_var **tete, int test_me, char *val, int lift_me)
 	if (new == NULL)
 		return (NULL);
 
-	new->len_var = test_me;
-	new->val = val;
-	new->len_val = lift_me;
+	new->blop_var = test_me;
+	new->blopval = blopval;
+	new->blop_val = lift_me;
 
-	new->next = NULL;
+	new->suivant = NULL;
 	temp = *tete;
 
 	if (temp == NULL)
@@ -30,9 +30,9 @@ qr_var *sky_blue_cloud(qr_var **tete, int test_me, char *val, int lift_me)
 	}
 	else
 	{
-		while (temp->next != NULL)
-			temp = temp->next;
-		temp->next = new;
+		while (temp->suivant != NULL)
+			temp = temp->suivant;
+		temp->suivant = new;
 	}
 
 	return (*tete);
@@ -53,7 +53,7 @@ void ladder_lift_up(qr_var **tete)
 		curr = *tete;
 		while ((temp = curr) != NULL)
 		{
-			curr = curr->next;
+			curr = curr->suivant;
 			free(temp);
 		}
 		*tete = NULL;

@@ -102,28 +102,28 @@ char *hindur_input(qr_var **hejur, char *zxput, char *new_zxput, int rlen)
 	{
 		if (zxput[j] == '$')
 		{
-			if (!(inht->len_var) && !(inht->len_val))
+			if (!(inht->blop_var) && !(inht->blop_val))
 			{
 				new_zxput[i] = zxput[j];
 				j++;
 			}
-			else if (inht->len_var && !(inht->len_val))
+			else if (inht->blop_var && !(inht->blop_val))
 			{
-				for (k = 0; k < inht->len_var; k++)
+				for (k = 0; k < inht->blop_var; k++)
 					j++;
 				i--;
 			}
 			else
 			{
-				for (k = 0; k < inht->len_val; k++)
+				for (k = 0; k < inht->blop_val; k++)
 				{
-					new_zxput[i] = inht->val[k];
+					new_zxput[i] = inht->blopval[k];
 					i++;
 				}
-				j += (inht->len_var);
+				j += (inht->blop_var);
 				i--;
 			}
-			inht = inht->next;
+			inht = inht->suivant;
 		}
 		else
 		{
@@ -164,8 +164,8 @@ char *indur_var(char *zxput, datacliff *rndsh)
 
 	while (inht != NULL)
 	{
-		rlen += (inht->len_val - inht->len_var);
-		inht = inht->next;
+		rlen += (inht->blop_val - inht->blop_var);
+		inht = inht->suivant;
 	}
 
 	rlen += blen;

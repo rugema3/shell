@@ -18,9 +18,9 @@ int (*get_builtin(char *cmd))(datacliff *)
 	};
 	int i;
 
-	for (i = 0; builtin[i].name; i++)
+	for (i = 0; builtin[i].nom; i++)
 	{
-		if (strcap_e(builtin[i].name, cmd) == 0)
+		if (strcap_e(builtin[i].nom, cmd) == 0)
 			break;
 	}
 

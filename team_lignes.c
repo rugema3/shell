@@ -15,8 +15,8 @@ blame_lists *pin_stuff(blame_lists **tete, char troy)
 	if (new == NULL)
 		return (NULL);
 
-	new->separator = troy;
-	new->next = NULL;
+	new->separateur = troy;
+	new->suivant = NULL;
 	temp = *tete;
 
 	if (temp == NULL)
@@ -25,9 +25,9 @@ blame_lists *pin_stuff(blame_lists **tete, char troy)
 	}
 	else
 	{
-		while (temp->next != NULL)
-			temp = temp->next;
-		temp->next = new;
+		while (temp->suivant != NULL)
+			temp = temp->suivant;
+		temp->suivant = new;
 	}
 
 	return (*tete);
@@ -48,7 +48,7 @@ void jargon_stuff(blame_lists **tete)
 		curr = *tete;
 		while ((temp = curr) != NULL)
 		{
-			curr = curr->next;
+			curr = curr->suivant;
 			free(temp);
 		}
 		*tete = NULL;
@@ -59,10 +59,10 @@ void jargon_stuff(blame_lists **tete)
  * lead_stuff - adds a command line at the end
  * of a ligna_lista.
  * @tete: head of the linked list.
- * @line: command line.
+ * @ligna: command line.
  * Return: address of the head.
  */
-ligna_lista *lead_stuff(ligna_lista **tete, char *line)
+ligna_lista *lead_stuff(ligna_lista **tete, char *ligna)
 {
 	ligna_lista *new, *temp;
 
@@ -70,8 +70,8 @@ ligna_lista *lead_stuff(ligna_lista **tete, char *line)
 	if (new == NULL)
 		return (NULL);
 
-	new->line = line;
-	new->next = NULL;
+	new->ligna = ligna;
+	new->suivant = NULL;
 	temp = *tete;
 
 	if (temp == NULL)
@@ -80,9 +80,9 @@ ligna_lista *lead_stuff(ligna_lista **tete, char *line)
 	}
 	else
 	{
-		while (temp->next != NULL)
-			temp = temp->next;
-		temp->next = new;
+		while (temp->suivant != NULL)
+			temp = temp->suivant;
+		temp->suivant = new;
 	}
 
 	return (*tete);
@@ -103,7 +103,7 @@ void oblique_stuff(ligna_lista **tete)
 		curr = *tete;
 		while ((temp = curr) != NULL)
 		{
-			curr = curr->next;
+			curr = curr->suivant;
 			free(temp);
 		}
 		*tete = NULL;

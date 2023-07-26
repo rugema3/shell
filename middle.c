@@ -55,7 +55,7 @@ char *swap_char(char *mettre, int bool)
 void add_nodes(blame_lists **head_s, ligna_lista **head_l, char *mettre)
 {
 	int i;
-	char *line;
+	char *ligna;
 
 	mettre = swap_char(mettre, 0);
 
@@ -71,12 +71,12 @@ void add_nodes(blame_lists **head_s, ligna_lista **head_l, char *mettre)
 		}
 	}
 
-	line = right(mettre, ";|&");
+	ligna = right(mettre, ";|&");
 	do {
-		line = swap_char(line, 1);
-		lead_stuff(head_l, line);
-		line = right(NULL, ";|&");
-	} while (line != NULL);
+		ligna = swap_char(ligna, 1);
+		lead_stuff(head_l, ligna);
+		ligna = right(NULL, ";|&");
+	} while (ligna != NULL);
 
 }
 
@@ -103,20 +103,20 @@ void go_next(blame_lists **list_s, ligna_lista **list_l, datacliff *rndsh)
 
 		if (rndsh->guys == 0)
 		{
-			if (ls_s->separator == '&' || ls_s->separator == ';')
+			if (ls_s->separateur == '&' || ls_s->separateur == ';')
 				loop_sep = 0;
-			if (ls_s->separator == '|')
-				ls_l = ls_l->next, ls_s = ls_s->next;
+			if (ls_s->separateur == '|')
+				ls_l = ls_l->suivant, ls_s = ls_s->suivant;
 		}
 		else
 		{
-			if (ls_s->separator == '|' || ls_s->separator == ';')
+			if (ls_s->separateur == '|' || ls_s->separateur == ';')
 				loop_sep = 0;
-			if (ls_s->separator == '&')
-				ls_l = ls_l->next, ls_s = ls_s->next;
+			if (ls_s->separateur == '&')
+				ls_l = ls_l->suivant, ls_s = ls_s->suivant;
 		}
 		if (ls_s != NULL && !loop_sep)
-			ls_s = ls_s->next;
+			ls_s = ls_s->suivant;
 	}
 
 	*list_s = ls_s;
@@ -148,7 +148,7 @@ int split_commands(datacliff *rndsh, char *mettre)
 
 	while (list_l != NULL)
 	{
-		rndsh->mettre = list_l->line;
+		rndsh->mettre = list_l->ligna;
 		rndsh->kwargs = split_line(rndsh->mettre);
 		loop = iher_umur(rndsh);
 		free(rndsh->kwargs);
@@ -160,7 +160,7 @@ int split_commands(datacliff *rndsh, char *mettre)
 		go_next(&list_s, &list_l, rndsh);
 
 		if (list_l != NULL)
-			list_l = list_l->next;
+			list_l = list_l->suivant;
 	}
 
 	jargon_stuff(&head_s);
