@@ -100,7 +100,7 @@ void go_next(sep_list **list_s, line_list **list_l, data_shell *rndsh)
 	while (ls_s != NULL && loop_sep)
 	{
 
-		if (rndsh->status == 0)
+		if (rndsh->guys == 0)
 		{
 			if (ls_s->separator == '&' || ls_s->separator == ';')
 				loop_sep = 0;
