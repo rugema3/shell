@@ -8,7 +8,7 @@
  * @rat: data structure
  * Return: no return
  */
-void suzum_env(r_var **d, char *ips, datacliff *rat)
+void suzum_env(qr_var **d, char *ips, datacliff *rat)
 {
 	int umurongo, xhr, j, uburo;
 	char **_envr;
@@ -50,7 +50,7 @@ void suzum_env(r_var **d, char *ips, datacliff *rat)
  * @rat: data structure
  * Return: no return
  */
-int suzum_vars(r_var **d, char *ips, char *foot, datacliff *rat)
+int suzum_vars(qr_var **d, char *ips, char *foot, datacliff *rat)
 {
 	int i, sxt, lpd;
 
@@ -92,9 +92,9 @@ int suzum_vars(r_var **d, char *ips, char *foot, datacliff *rat)
  * @rlen: new length
  * Return: replaced string
  */
-char *hindur_input(r_var **hejur, char *zxput, char *new_zxput, int rlen)
+char *hindur_input(qr_var **hejur, char *zxput, char *new_zxput, int rlen)
 {
-	r_var *inht;
+	qr_var *inht;
 	int i, j, k;
 
 	inht = *hejur;
@@ -144,7 +144,7 @@ char *hindur_input(r_var **hejur, char *zxput, char *new_zxput, int rlen)
  */
 char *indur_var(char *zxput, datacliff *rndsh)
 {
-	r_var *hejur, *inht;
+	qr_var *hejur, *inht;
 	char *guys, *new_zxput;
 	int blen, rlen;
 

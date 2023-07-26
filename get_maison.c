@@ -7,7 +7,7 @@
  */
 int (*get_builtin(char *cmd))(datacliff *)
 {
-	builtin_t builtin[] = {
+	bare_b builtin[] = {
 		{ "env", ibik },
 		{ "exit", exit_shell },
 		{ "setenv", _setenv },

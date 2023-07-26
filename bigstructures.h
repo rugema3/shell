@@ -47,31 +47,31 @@ typedef struct ligna_lista_s
 } ligna_lista;
 
 /**
- * struct r_var_list - single linked list
+ * struct qr_var_liste - single linked list
  * @len_var: length of the variable
  * @val: value of the variable
  * @len_val: length of the value
  * @next: next node
  * Description: single linked list to store variables
  */
-typedef struct r_var_list
+typedef struct qr_var_liste
 {
     int len_var;
     char *val;
     int len_val;
-    struct r_var_list *next;
-} r_var;
+    struct qr_var_liste *next;
+} qr_var;
 
 /**
- * struct builtin_s - Builtin struct for command args.
+ * struct bare_built - Builtin struct for command args.
  * @name: The name of the command builtin i.e cd, exit, env
  * @f: data type pointer function.
  */
-typedef struct builtin_s
+typedef struct bare_built
 {
     char *name;
     int (*f)(datacliff *rndsh);
-} builtin_t;
+} bare_b;
 
 #endif /* _BIGSTRUCTURES_H_ */
 

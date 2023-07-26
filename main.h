@@ -20,15 +20,15 @@
 /* Points to an array of pointers to strings called the "environment" */
 extern char **environ;
 
-/* aux_lists.c */
+/* team_lignes.c */
 blame_lists *pin_stuff(blame_lists **tete, char troy);
 void jargon_stuff(blame_lists **tete);
 ligna_lista *lead_stuff(ligna_lista **tete, char *line);
 void oblique_stuff(ligna_lista **tete);
 
-/* aux_lists2.c */
-r_var *sky_blue_cloud(r_var **tete, int test_me, char *var, int lift_me);
-void ladder_lift_up(r_var **tete);
+/* team_lignes2.c */
+qr_var *sky_blue_cloud(qr_var **tete, int test_me, char *var, int lift_me);
+void ladder_lift_up(qr_var **tete);
 
 /* aux_str functions */
 char *_strpuss(char *dest, const char *src);
@@ -37,7 +37,7 @@ int strcap_e(char *s1, char *s2);
 char *strchrap_load(char *s, char c);
 int strsnap_load(char *s, char *accept);
 
-/* aux_mem.c */
+/* team_meomoir.c */
 void _memcpy(void *newptr, const void *ptr, unsigned int size);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size);
@@ -52,58 +52,58 @@ int cnombre(const char *s);
 /* aux_str3.c */
 void rem_string(char *s);
 
-/* check_syntax_error.c */
+/* contr_syntax_error.c */
 int sleeve_chr(char *mettre, int i);
 int snoop_error_og(char *mettre, int i, char last);
 int econ_char(char *mettre, int *i);
 void erakan_syntax_ikos(datacliff *rndsh, char *mettre, int i, int bool);
 int syntax_error_check(datacliff *rndsh, char *mettre);
 
-/* shell_loop.c */
+/* boast.c */
 char *without_comment(char *in);
 void shell_loop(datacliff *rndsh);
 
-/* read_line.c */
+/* lire_ligne.c */
 char *soma_umur(int *i_eof);
 
-/* split.c */
+/* middle.c */
 char *swap_char(char *mettre, int bool);
 void add_nodes(blame_lists **head_s, ligna_lista **head_l, char *mettre);
 void go_next(blame_lists **list_s, ligna_lista **list_l, datacliff *rndsh);
 int split_commands(datacliff *rndsh, char *mettre);
 char **split_line(char *mettre);
 
-/* rep_var.c */
-void check_env(r_var **h, char *in, datacliff *data);
-int check_vars(r_var **h, char *in, char *st, datacliff *data);
-char *replaced_mettre(r_var **head, char *mettre, char *new_input, int nlen);
+/* lock_val.c */
+void check_env(qr_var **h, char *in, datacliff *data);
+int check_vars(qr_var **h, char *in, char *st, datacliff *data);
+char *replaced_mettre(qr_var **head, char *mettre, char *new_input, int nlen);
 char *indur_var(char *mettre, datacliff *rndsh);
 
-/* get_line.c */
+/* prener_ligne.c */
 void bring_line(char **lineptr, size_t *n, char *buffer, size_t j);
 ssize_t get_line(char **lineptr, size_t *n, FILE *stream);
 
 /* exec_line */
 int iher_umur(datacliff *rndsh);
 
-/* cmd_exec.c */
+/* cmdcm_execu.c */
 int is_cdir(char *path, int *i);
 char *_which(char *cmd, char **evision);
 int is_executable(datacliff *rndsh);
 int check_error_cmd(char *dir, datacliff *rndsh);
 int cmd_exec(datacliff *rndsh);
 
-/* env1.c */
+/* joinagrs.c */
 char *akirenv(const char *name, char **evision);
 int ibik(datacliff *rndsh);
 
-/* env2.c */
+/* team_aux_mem2.c */
 char *copy_info(char *name, char *value);
 void set_env(char *name, char *value, datacliff *rndsh);
 int _setenv(datacliff *rndsh);
 int _unsetenv(datacliff *rndsh);
 
-/* cd.c */
+/* pack.c */
 void _dot(datacliff *rndsh);
 void dot_cmd(datacliff *rndsh);
 void previous_cmd(datacliff *rndsh);
@@ -112,18 +112,18 @@ void home_to_cdr(datacliff *rndsh);
 /* rnd_catch.c */
 int rnd_catch(datacliff *cowsh);
 
-/* get_builtin */
+/* get_maison.c */
 int (*get_builtin(char *cmd))(datacliff *rndsh);
 
 /* _exit.c */
 int exit_shell(datacliff *rndsh);
 
-/* aux_stdlib.c */
+/* top_team_st.c */
 int how_long(int num_it);
 char *conv_num(int num_it);
 int str_oax(char *s);
 
-/* aux_error1.c */
+/* err_msges.c */
 char *concat_error_message(datacliff *, char *, char *, char *);
 char *get_cd_error_message(datacliff *rndsh);
 char *get_not_found_error(datacliff *rndsh);
@@ -140,22 +140,22 @@ char *generate_path_126_error(datacliff *rndsh);
 /* get_feel_error2.c */
 int get_feel_error2(datacliff *cowsh, int cat2);
 
-/* get_sigint.c */
+/* prener_gisnt.c */
 void get_sigint(int sig);
 
-/* aux_help.c */
+/* team_help.c */
 void load_color(void);
 void invert_color(void);
 void lens_color(void);
 void duo_color(void);
 void saturn_color(void);
 
-/* aux_help2.c */
+/* team_help2.c */
 void help_info_builtin(void);
 void help_info_alias(void);
 void help_info_cd(void);
 
-/* get_help.c */
+/* prener_aide.c */
 int akir_ubuf(datacliff *rndsh);
 
 #endif
